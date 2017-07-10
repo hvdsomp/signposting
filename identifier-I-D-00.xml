@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "http://xml.resource.org/authoring/rfc2629.dtd" [
+<!-- One method to get references from the online citation libraries.
+     There has to be one entity for each item to be referenced. 
+     An alternate method (rfc include) is described in the references. -->
+
+<!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"> 
+<!ENTITY RFC5988 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml"> 
+<!ENTITY RFC6596 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6596.xml"> 
+<!ENTITY RFC4287 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4287.xml">
+<!ENTITY RFC6249 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6249.xml">
+]>
+
+<?rfc compact="yes" ?>
+<?rfc subcompact="no" ?>
+<?rfc toc="yes" ?>
+<?rfc sortrefs="yes" ?>
+<?rfc symrefs="yes" ?>
+<rfc category="info" ipr="trust200902" docName="draft-vandesompel-identifier-00">
+    <front>
+        <title abbrev="Identifier Relation">Identifier: A Link Relation to Convey a Preferred URI for Referencing</title>
+        <author initials="H." surname="Van de Sompel" fullname="Herbert Van de Sompel">
+            <organization>Los Alamos National Laboratory</organization>
+            <address>
+                <email>herbertv@lanl.gov</email>
+                <uri>http://public.lanl.gov/herbertv/</uri>
+            </address>
+        </author>
+        <author initials="M.L." surname="Nelson" fullname="Michael Nelson">
+            <organization>Old Dominion University</organization>
+            <address>
+                <email>mln@cs.odu.edu</email>
+                <uri>http://www.cs.odu.edu/~mln/</uri>
+            </address>
+        </author>
+        <!--
+        <author initials="J." surname="Kunze" fullname="John Kunze">
+            <organization>California Digital Library</organization>
+            <address>
+                <email>John.Kunze@ucop.edu</email>
+                <uri>http://www.cdlib.org/contact/staff_directory/jkunze.html</uri>
+            </address>
+        </author>
+        <author initials="G." surname="Bilder" fullname="Geoffrey Bilder">
+            <organization>Crossref</organization>
+            <address>
+                <email>gbilder@crossref.org</email>
+                <uri>https://www.crossref.org/authors/geoffrey-bilder/</uri>
+            </address>
+        </author>
+        <author initials="S." surname="Warner" fullname="Simeon Warner">
+            <organization>Cornell University</organization>
+            <address>
+                <email>simeon.warner@cornell.edu</email>
+            </address>
+        </author>
+        -->
+        <date day="7" month="July" year="2017"/>
+        <abstract>
+            <t>This specification defines a link relation type that is intended 
+                to convey that a URI, other than the URI that provides a link 
+                with the relation type, is preferred for the purpose of referencing. 
+            </t>
+        </abstract>
+        <note title="Note to Readers">
+            <t>Please discuss this draft on the ART mailing list (<eref target="https://www.ietf.org/mailman/listinfo/art"/>).</t>
+        </note>
+    </front>
+    <middle>
+        <section title="Introduction" anchor="introduction">
+            <t>A web resource is routinely referenced (e.g. linked, bookmarked) by means of the URI where it is 
+                directly accessed. But cases exist whereby referencing 
+                a resource by means of a different URI is preferred, for example because the latter URI 
+                is intended to be more persistent over time. Currently, there is no way to convey such  
+                alternative referencing preferences; this specification introduces a link relation type 
+                intended for that purpose.</t>
+        </section>
+        <section title="Terminology" anchor="terminology">
+            <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 <xref target="RFC2119"/>.</t>
+            <t>This section introduces two types of URIs for a web resource:</t>
+            <t><list style="symbols">
+                <t>&quot;actual URI&quot;: An actionable URI at which a user agent accesses a web resource. 
+                </t>
+                <t>&quot;identifying URI&quot;: An actionable URI, other than the actual URI,  
+                    that should preferentially be used for referencing (e.g. linking, bookmarking).</t>
+            </list></t>  
+            <t>Hereby &quot;actionable&quot; means that protocol-based read access to the resource identified by the URI 
+                is possible. For example, an HTTP URI is actionable because read access is possible by issuing 
+                an HTTP HEAD or GET request against the URI.</t>
+        </section>
+        <section title="Scenarios" anchor="scenarios">
+            <section title="Persistent Identifiers" anchor="PIDs">
+            <t>Despite sound advise regarding the design of Cool URIs <xref target="CoolURIs"/>, 
+                link rot (&quot;HTTP 404 Not Found&quot;) is a common phenomena when following links on 
+                the web. Certain communities of practice have introduced a solution to combat this problem  
+                that typically consists of:</t>
+            <t><list style="symbols">
+                <t>Accepting the reality that the web location of a resource - the actual URI - may change 
+                    over time.</t>
+                <t>Minting an additional URI for the resource - the identififying URI - that is specifically 
+                    intended to remain persistent over time.</t>
+                <t>Redirecting (typically &quot;HTTP 301 Moved Permanently&quot;, &quot;HTTP 302 Found&quot;, 
+                    or &quot;HTTP 303 See Other&quot;) from the identififying URI to the actual URI.</t>
+                <t>As a community, committing to adjust that redirection whenever the actual URI changes 
+                    over time.</t>
+            </list></t>
+            <t>This approach is, for example, used by:</t>
+            <t><list style="symbols">
+                <t>Scholalry publishers that use DOIs <xref target="DOIs"/> to identify articles and DOI URLs 
+                    <xref target="DOI-URLs"/> as a means to keep cross-publisher article-to-article links 
+                    operational, even when the journals in which the articles are published change hands from 
+                    one publisher to another, for example, as a result of an acquisition.</t>
+                <t>Authors of controlled vocabularies that use PURLs <xref target="PURLs"/> for vocabulary 
+                    terms to ensure that the term URIs remain stable even if management of the vocabulary is 
+                    transfered to a new custodian.</t>
+                <t>A variety of organizations, including libraries, archives, and museums that assign ARK URLs 
+                    <xref target="draft-kunze-ark-18"/> to information objects in order to support long-term 
+                    access.</t>
+            </list></t>
+                <t>In order for the investments in infrastructure involved in these approaches to pay off, 
+                and hence for links to effectively to remain operational as intended, it is crucial that a resource 
+                be referenced by means of its identifying URI. However, the actual URI is where 
+                a user agent actually accesses the resource (e.g. it is the URI in the browser's address bar). 
+                As such, there is a considerable risk that the actual URI instead of the identifying URI 
+                is used for referencing <xref target="PIDs-must-be-used"/>.</t>
+                <t>The link relation type defined in this specification allows to 
+                convey to user agents that the identifying URI is the preferred URI for referencing. 
+                Applications such as bookmarking tools, citation managers, and webometrics can take this preference 
+                into account when recording a URI.
+               </t>
+            </section>
+            <section title="Preferred Social Identifier" anchor="ORCID">
+                <t>A web user commonly has mutliple profiles on the web, for example, 
+                    one per social network she takes part in, 
+                    a personal homepage, a professional homepage, a FOAF profile <xref target="FOAF"/>, etc. 
+                    Each of these profiles is accessible at a distinct URI. But the user may 
+                    have a preference for one of those profiles, for example, because it is most complete, 
+                    kept up-to-date, or expected to be long-lived.          
+                </t>
+                <t>The link relation type defined in this specification allows to convey to user agents that 
+                a profile URI - the identifying URI - other than the one the agent is 
+                accessing - the actual URI - is preferred for referencing.</t>
+            </section>
+            <section title="Multi-Resource Publications" anchor="ORE">
+                <t>When publishing on the web, it is not uncommon to make distinct components of a 
+                publication available as different web resources, each with their own URI. For example:</t>
+                <t><list style="symbols">
+                <t>Contemporary scholarly publications routinely consists of a 
+                traditional article as well as additional materials that are considered an integral part of the 
+                publication such as supplementary information, high-resolution images, a video recording 
+                of an experiment.</t>
+               <t>Scientific or governmental open data sets frequently consist of multiple files.</t>
+               <t>Online books typically consist of multiple chapters.</t>
+                </list></t>
+                <t>While each of these components are accessible at their distinct URI - the actual URI - they often also 
+                share a URI assinged to the intellectual publication of which they are components - the identifying URI.</t> 
+                <t>The link relation type defined in this specification allows to 
+                convey to user agents that, for the purpose of referencing, the identifying URI of the intellectual publication  
+                is preferred over an actual URI of a component of the publication.
+                </t>
+            </section>
+            </section>
+        <section title="The &quot;identifier&quot; Relation Type for Expressing a Preferred URI for the Purpose of Referencing" anchor="identifier-link-relation">
+            <t>A link with the "identifier" relation type indicates that the Target IRI - the identifying URI - is preferred over 
+                the Context IRI - the actual URI - for the purpose of referencing.</t>
+            <t>Because a link with the "identifier" relation type expresses a preferred URI for the purpose of 
+                referencing, the actual URI SHOULD only provide one link with that relation type.</t> 
+            <t>Providing a link with the "identifier" relation type does not prevent using the actual URI 
+                for the purpose of referencing if such specificity is needed for the application at hand.  
+                For example, in the case of scenario <xref target="ORE"/> the actual URI is likely required for the 
+                purpose of annotating a specific component of an intellectual publication. Yet, the annotation application 
+                may also want to include a reference to the identifying URI.</t>
+        </section>
+        <section title="Distinction with Other Relation Types" anchor="other-relations">
+            <t>It might seem that IANA-registered relationships already exist for  
+                the relationship that "identifier" is intended to convey. The most likely 
+                candidates would be:
+            </t>
+            <t><list style="symbols">
+                <t>"alternate" <xref target="RFC4287"/>, used to link to an alternate version of 
+                    the content at the Context IRI, for example the same content with varying 
+                    Content-Type (e.g., application/pdf vs. text/html) and/or Content-Language 
+                    (e.g., en vs. fr).
+                </t>
+                <t>"bookmark" <xref target="W3C.REC-html5-20151028"/>, used to convey a 
+                    permanent link to use for bookmarking purposes.
+                </t>
+                <t>"canonical" <xref target="RFC6596"/>, used to identify content that is 
+                    either duplicative or a superset of the content at the Context IRI, 
+                    for example a single page version of a magazine article, provided
+                    for indexing by search engines, of an article that is spread over 
+                    several pages for human use.
+                </t>
+                <t>"duplicate" <xref target="RFC6249"/>, used to link to a resource whose 
+                    available representations are byte-for-byte identical with the 
+                    corresponding representations of the context IRI, for example, 
+                    an identical file on a mirror site.
+                </t>
+                <t>"related" <xref target="RFC4287"/>, used to link to a related resource.
+                </t>
+            </list></t>
+            <t>A closer inspection of these candidates <xref target="identifier-blog"/> shows 
+                that they are not appropriate and that a new relation type is required. In 
+                summary:</t>
+                <t><list>
+                    <t>In the scenario of <xref target="PIDs"/> there is no content available 
+                        at the identifying URI as it merely redirects to the actual URI. 
+                        In the scenario of <xref target="ORCID"/>, the content at the 
+                        identifying URI is a profile that is different than the profile at the 
+                        actual URI. In scenario of <xref target="ORE"/> the 
+                        content at the identifying URI, if any, would typcially be a sort of 
+                        table of contents page with links to component resources and possibly 
+                        a summary. These considerations exclude "alternate", 
+                        "canonical", and "duplicate" as possible relation types.</t>
+                    <t>The intent of "bookmark" is closest related to that of "identifier" 
+                        in that the Target IRI of a link with this relation type is intended for 
+                        bookmarking, which is a case of referencing. However, "bookmark" 
+                        is specifically defined for use in conjunction with the HTML 
+                        &lt;article&gt; element and is explictly excluded from use in the 
+                        &lt;link&gt; element in HTML &lt;head&gt;. Since a link in 
+                        &lt;link&gt; and one in the HTTP Link header are semantically equivalent, 
+                        "bookmark" is also excluded from use in HTTP Link.
+                    </t>
+                    <t>While "related" could be used, its semantics are too vague 
+                    to convey the specific nature of "identifier" as a means to 
+                    convey a URI for the purpose of referencing.</t>
+                    
+                </list></t>
+        </section>
+         <section title="Examples" anchor="link-identifier-examples">
+             <t>Sections <xref target="link-identifier-1"/> and 
+                 <xref target="link-identifier-2"/>
+              show examples of the use of links with the "identifier" relation type. 
+              One example shows its use in a response header and body, 
+              the other in a response body only.
+              </t>
+             <section title="Persistent HTTP URI" anchor="link-identifier-1">
+                 <t>If the context resource is a landing page for a 
+                 scholarly article for which the persistent HTTP URI 
+                 &lt;http://persistence.example.org/738207472&gt; was minted, 
+                 then the response to an HTTP GET on the landing page's URI 
+                 could be as shown in <xref target="Response1"/>.</t>
+
+               <figure title="Response to HTTP GET on the URI of the landing page of 
+                   a scholarly article" align="center" anchor="Response1">
+                   <artwork align="left"><![CDATA[
+HTTP/1.1 200 OK
+Link: <http://persistence.example.org/738207472> ; rel="identifier"
+Content-Type: text/html;charset=utf-8
+
+<html>
+ <head>
+ ...
+  <link rel="identifier" href="http://persistence.example.org/738207472" />
+ ...
+ </head>
+ <body>
+  ...
+ </body>
+</html>
+]]>
+                   </artwork> 
+               </figure>
+            </section>
+             <section title="Preferred Profile URI" anchor="link-identifier-2">
+                 <t>If the context resource is the home page of John Doe, John can add a 
+                     link with the "identifier" relation type to it, 
+                    as a means to convey that he would preferably be referenced 
+                    by means of the URI of his FOAF profile. <xref target="Response2"/>
+                 shows the response to an HTTP GET on the URI of John's home page. 
+                 </t>
+                 <figure title="Response to HTTP GET on the URI of John Doe's home page" 
+                     align="center" anchor="Response2">
+                     <artwork align="left"><![CDATA[
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=utf-8
+
+<html>
+ <head>
+ ...
+  <link rel="identifier" href="http://johndoe.example.com/foaf" type="txt/ttl"/>
+ ...
+ </head>
+ <body>
+  ...
+ </body>
+</html>
+]]>
+                     </artwork>
+                 </figure>
+            </section>
+        </section>
+        <section title="IANA Considerations" anchor="iana-considerations">
+            <section title="Link Relation Type: identifier">
+                <t>The link relation type below has been registered by IANA per Section 6.2.1 of <xref target="RFC5988"/>:</t>
+                <t>
+                    <list>
+                        <t>Relation Name: identifier</t>
+                        <t>Description: A link with the "identifier" relation type that points from a Context IRI to a target IRI 
+                            indicates that the Target IRI is preferred over the Context IRI for the purpose of referencing.</t>
+                        <t>Reference: [[ This document ]]</t>
+                    </list>
+                </t>
+            </section>
+        </section>
+        <section title="Security Considerations" anchor="security-considerations">
+            <t>There are no additional security concerns introduced by this document.</t>
+        </section>
+    </middle>
+    
+    <back>
+        <references title="Normative References">
+&RFC2119; 
+&RFC5988; 
+&RFC6596; 
+&RFC4287;
+&RFC6249;
+
+            <reference anchor="W3C.REC-html5-20151028">
+                <front>
+                    <title abbrev="HTML5">HTML5</title>
+                    <author initials="I." surname="Hickson" fullname="Ian Hickson"/>
+                    <author initials="R." surname="Berjon" fullname="Robin Berjon"/>
+                    <author initials="S." surname="Faulkner" fullname="Steve Faulkner"/>
+                    <author initials="T." surname="Leithead" fullname="Travis Leithead"/>
+                    <author initials="E." surname="Doyle Navara" fullname="Erika Doyle Navara"/>
+                    <author initials="E." surname="O'Connor" fullname="Edward O'Connor"/>
+                    <author initials="S." surname="Pfeiffer" fullname="Silvia Pfeiffer"/>
+                    <date month="October" year="2014"/>
+                </front>
+                <seriesInfo name="World Wide Web Consortium" value="Recommendation REC-HTML5-20141028"/>
+            </reference>
+            
+        </references>
+        
+        <references title="Informative References">
+            
+          <reference anchor="CoolURIs">
+              <front>
+                  <title abbrev="Cool URIs">Cool URIs don't change</title>
+                  <author initials="T." surname="Berners-Lee" fullname="Tim Berners-Lee"/>
+                  <date year="1998"/>
+                  <!--
+                  <uri>https://www.w3.org/Provider/Style/URI.html</uri>
+                  -->
+              </front>
+              <seriesInfo name="World Wide Web Consortium" value="&lt;https://www.w3.org/Provider/Style/URI.html&gt;"/>
+          </reference>  
+          <reference anchor="DOIs">
+              <front>
+                  <title abbrev="DOI system">Information and documentation - Digital object identifier system</title>
+                  <author fullname="ISO" />
+                  <date year="2012"/>
+                  <!--
+                  <uri>https://www.iso.org/obp/ui/#iso:std:iso:26324:ed-1:v1:en</uri>
+                  -->
+              </front>
+              <seriesInfo name="ISO" value="26324:2012(en)"/>
+          </reference>
+          <reference anchor="DOI-URLs">
+              <front>
+                  <title abbrev="Displaying DOIs">Display guidelines for Crossref DOIs</title>
+                  <author initials="G." surname="Hendricks" fullname="Ginny Hendricks" />
+                  <date month="June" day="20" year="2017"/>
+                  <!--
+                  <uri>https://blog.crossref.org/display-guidelines/</uri>
+                  -->
+              </front>
+              <seriesInfo name="Crossref blog" value="&lt;https://blog.crossref.org/display-guidelines/&gt;"/>
+          </reference>
+          
+            <reference anchor="identifier-blog">
+                <front>
+                    <title abbrev="PID Linking">Linking to Persistent Identifiers with rel="identifier"</title>
+                    <author initials="M.L." surname="Nelson" fullname="Michael L. Nelson"/>
+                    <date month="July" day="11" year="2016"/>
+                    <!--
+                  <uri>http://ws-dl.blogspot.nl/2016/11/2016-11-07-linking-to-persistent.html</uri>
+                  -->
+                </front>
+                <seriesInfo name="Web Science and Digital Library Research Group Blog" value="&lt;http://ws-dl.blogspot.nl/2016/11/2016-11-07-linking-to-persistent.html&gt;"/>
+            </reference>
+          
+          <reference anchor="draft-kunze-ark-18">
+              <front>
+                  <title abbrev="ARK Scheme">The ARK Identifier Scheme</title>
+                  <author initials="J." surname="Kunze" fullname="John Kunze"/>
+                  <author initials="R." surname="Rodgers" fullname="R. Rodgers"/>
+                  <date month="April" year="2013"/>
+                  <!--
+                  <uri>https://datatracker.ietf.org/doc/html/draft-kunze-ark</uri>
+                  -->
+              </front>
+              <seriesInfo name="Internet Draft" value="draft-kunze-ark-18"/>
+          </reference>
+            
+          <reference anchor="PURLs">
+              <front>
+                  <title abbrev="PURL">Persistent uniform resource locator</title>
+                  <author fullname="Wikipedia" />
+                  <date day="5" month="April" year="2017"/>
+                  <!--
+                  <uri>https://en.wikipedia.org/wiki/Persistent_uniform_resource_locator</uri>
+                  -->
+              </front>
+              <seriesInfo name="Wikipedia" value="&lt;https://en.wikipedia.org/wiki/Persistent_uniform_resource_locator&gt;"/>
+          </reference>
+          <reference anchor="PIDs-must-be-used">
+              <front>
+                  <title abbrev="PIDs Must Be Used">Persistent URIs Must Be Used To Be Persistent</title>
+                  <author initials="H." surname="Van de Sompel" fullname="Herbert Van de Sompel"/>
+                  <author initials="M." surname="Klein" fullname="Martin Klein"/>
+                  <author initials="S." surname="Jones" fullname="Shawn Jones"/>
+                  <date month="February" year="2016"/>
+                  <!--
+                  <uri>http://arxiv.org/1602.09102</uri>
+                  -->
+              </front>
+              <seriesInfo name="arXiv.org" value="&lt;http://arxiv.org/1602.09102&gt;"/>
+          </reference>
+            
+          <reference anchor="FOAF">
+              <front>
+                  <title abbrev="FOAF Spec">FOAF Vocabulary Specification 0.99</title>
+                  <author initials="D." surname="Brickley" fullname="Dan Brickley"/>
+                  <author initials="L." surname="Miller" fullname="Libby Miller"/>
+                  <date month="January" year="2014"/>
+                  <!--
+                  <uri>http://xmlns.com/foaf/spec/</uri>
+                  -->
+              </front>
+          </reference>
+            
+      </references>
+   
+<!--
+      <section title="Acknowledgements">
+         <t>Thanks for comments and suggestions provided by Mark Nottingham, ...</t>
+      </section>
+-->
+    </back>
+</rfc>
