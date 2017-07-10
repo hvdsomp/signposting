@@ -33,7 +33,6 @@
                 <uri>http://www.cs.odu.edu/~mln/</uri>
             </address>
         </author>
-        <!--
         <author initials="J." surname="Kunze" fullname="John Kunze">
             <organization>California Digital Library</organization>
             <address>
@@ -41,6 +40,7 @@
                 <uri>http://www.cdlib.org/contact/staff_directory/jkunze.html</uri>
             </address>
         </author>
+        <!--
         <author initials="G." surname="Bilder" fullname="Geoffrey Bilder">
             <organization>Crossref</organization>
             <address>
@@ -48,14 +48,14 @@
                 <uri>https://www.crossref.org/authors/geoffrey-bilder/</uri>
             </address>
         </author>
+        -->
         <author initials="S." surname="Warner" fullname="Simeon Warner">
             <organization>Cornell University</organization>
             <address>
                 <email>simeon.warner@cornell.edu</email>
             </address>
         </author>
-        -->
-        <date day="7" month="July" year="2017"/>
+        <date day="10" month="July" year="2017"/>
         <abstract>
             <t>This specification defines a link relation type that is intended 
                 to convey that a URI, other than the URI that provides a link 
@@ -84,13 +84,13 @@
                 <t>&quot;identifying URI&quot;: An actionable URI, other than the actual URI,  
                     that should preferentially be used for referencing (e.g. linking, bookmarking).</t>
             </list></t>  
-            <t>Hereby &quot;actionable&quot; means that protocol-based read access to the resource identified by the URI 
+            <t>Here &quot;actionable&quot; means that protocol-based read access to the resource identified by the URI 
                 is possible. For example, an HTTP URI is actionable because read access is possible by issuing 
                 an HTTP HEAD or GET request against the URI.</t>
         </section>
         <section title="Scenarios" anchor="scenarios">
             <section title="Persistent Identifiers" anchor="PIDs">
-            <t>Despite sound advise regarding the design of Cool URIs <xref target="CoolURIs"/>, 
+            <t>Despite sound advice regarding the design of Cool URIs <xref target="CoolURIs"/>, 
                 link rot (&quot;HTTP 404 Not Found&quot;) is a common phenomena when following links on 
                 the web. Certain communities of practice have introduced a solution to combat this problem  
                 that typically consists of:</t>
@@ -172,10 +172,8 @@
                 may also want to include a reference to the identifying URI.</t>
         </section>
         <section title="Distinction with Other Relation Types" anchor="other-relations">
-            <t>It might seem that IANA-registered relationships already exist for  
-                the relationship that "identifier" is intended to convey. The most likely 
-                candidates would be:
-            </t>
+            <t>The following existing IANA-registered relationships are similar to the relationship that 
+                "identifier" is intended to convey, but are not appropriate for various reasons:</t>
             <t><list style="symbols">
                 <t>"alternate" <xref target="RFC4287"/>, used to link to an alternate version of 
                     the content at the Context IRI, for example the same content with varying 
@@ -200,9 +198,7 @@
                 </t>
             </list></t>
             <t>A closer inspection of these candidates <xref target="identifier-blog"/> shows 
-                that they are not appropriate and that a new relation type is required. In 
-                summary:</t>
-                <t><list>
+                that they are not appropriate and that a new relation type is required.</t>
                     <t>In the scenario of <xref target="PIDs"/> there is no content available 
                         at the identifying URI as it merely redirects to the actual URI. 
                         In the scenario of <xref target="ORCID"/>, the content at the 
@@ -223,9 +219,7 @@
                     </t>
                     <t>While "related" could be used, its semantics are too vague 
                     to convey the specific nature of "identifier" as a means to 
-                    convey a URI for the purpose of referencing.</t>
-                    
-                </list></t>
+                    convey a URI for the purpose of referencing.</t>        
         </section>
          <section title="Examples" anchor="link-identifier-examples">
              <t>Sections <xref target="link-identifier-1"/> and 
