@@ -1,0 +1,561 @@
+
+
+
+
+
+Network Working Group                                   H. Van de Sompel
+Internet-Draft                            Los Alamos National Laboratory
+Intended status: Informational                                 M. Nelson
+Expires: January 11, 2018                        Old Dominion University
+                                                                J. Kunze
+                                              California Digital Library
+                                                               S. Warner
+                                                      Cornell University
+                                                           July 10, 2017
+
+
+ Identifier: A Link Relation to Convey a Preferred URI for Referencing
+                    draft-vandesompel-identifier-00
+
+Abstract
+
+   This specification defines a link relation type that is intended to
+   convey that a URI, other than the URI that provides a link with the
+   relation type, is preferred for the purpose of referencing.
+
+Note to Readers
+
+   Please discuss this draft on the ART mailing list
+   (<https://www.ietf.org/mailman/listinfo/art>).
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on January 11, 2018.
+
+Copyright Notice
+
+   Copyright (c) 2017 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018                [Page 1]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   2
+   3.  Scenarios . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     3.1.  Persistent Identifiers  . . . . . . . . . . . . . . . . .   3
+     3.2.  Preferred Social Identifier . . . . . . . . . . . . . . .   4
+     3.3.  Multi-Resource Publications . . . . . . . . . . . . . . .   4
+   4.  The "identifier" Relation Type for Expressing a Preferred URI
+       for the Purpose of Referencing  . . . . . . . . . . . . . . .   5
+   5.  Distinction with Other Relation Types . . . . . . . . . . . .   5
+   6.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     6.1.  Persistent HTTP URI . . . . . . . . . . . . . . . . . . .   6
+     6.2.  Preferred Profile URI . . . . . . . . . . . . . . . . . .   7
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
+     7.1.  Link Relation Type: identifier  . . . . . . . . . . . . .   8
+   8.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
+
+1.  Introduction
+
+   A web resource is routinely referenced (e.g. linked, bookmarked) by
+   means of the URI where it is directly accessed.  But cases exist
+   whereby referencing a resource by means of a different URI is
+   preferred, for example because the latter URI is intended to be more
+   persistent over time.  Currently, there is no way to convey such
+   alternative referencing preferences; this specification introduces a
+   link relation type intended for that purpose.
+
+2.  Terminology
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in RFC 2119 [RFC2119].
+
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018                [Page 2]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
+   This section introduces two types of URIs for a web resource:
+
+   o  "actual URI": An actionable URI at which a user agent accesses a
+      web resource.
+
+   o  "identifying URI": An actionable URI, other than the actual URI,
+      that should preferentially be used for referencing (e.g. linking,
+      bookmarking).
+
+   Here "actionable" means that protocol-based read access to the
+   resource identified by the URI is possible.  For example, an HTTP URI
+   is actionable because read access is possible by issuing an HTTP HEAD
+   or GET request against the URI.
+
+3.  Scenarios
+
+3.1.  Persistent Identifiers
+
+   Despite sound advice regarding the design of Cool URIs [CoolURIs],
+   link rot ("HTTP 404 Not Found") is a common phenomena when following
+   links on the web.  Certain communities of practice have introduced a
+   solution to combat this problem that typically consists of:
+
+   o  Accepting the reality that the web location of a resource - the
+      actual URI - may change over time.
+
+   o  Minting an additional URI for the resource - the identififying URI
+      - that is specifically intended to remain persistent over time.
+
+   o  Redirecting (typically "HTTP 301 Moved Permanently", "HTTP 302
+      Found", or "HTTP 303 See Other") from the identififying URI to the
+      actual URI.
+
+   o  As a community, committing to adjust that redirection whenever the
+      actual URI changes over time.
+
+   This approach is, for example, used by:
+
+   o  Scholalry publishers that use DOIs [DOIs] to identify articles and
+      DOI URLs [DOI-URLs] as a means to keep cross-publisher article-to-
+      article links operational, even when the journals in which the
+      articles are published change hands from one publisher to another,
+      for example, as a result of an acquisition.
+
+   o  Authors of controlled vocabularies that use PURLs [PURLs] for
+      vocabulary terms to ensure that the term URIs remain stable even
+      if management of the vocabulary is transfered to a new custodian.
+
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018                [Page 3]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
+   o  A variety of organizations, including libraries, archives, and
+      museums that assign ARK URLs [draft-kunze-ark-18] to information
+      objects in order to support long-term access.
+
+   In order for the investments in infrastructure involved in these
+   approaches to pay off, and hence for links to effectively to remain
+   operational as intended, it is crucial that a resource be referenced
+   by means of its identifying URI.  However, the actual URI is where a
+   user agent actually accesses the resource (e.g. it is the URI in the
+   browser's address bar).  As such, there is a considerable risk that
+   the actual URI instead of the identifying URI is used for referencing
+   [PIDs-must-be-used].
+
+   The link relation type defined in this specification allows to convey
+   to user agents that the identifying URI is the preferred URI for
+   referencing.  Applications such as bookmarking tools, citation
+   managers, and webometrics can take this preference into account when
+   recording a URI.
+
+3.2.  Preferred Social Identifier
+
+   A web user commonly has mutliple profiles on the web, for example,
+   one per social network she takes part in, a personal homepage, a
+   professional homepage, a FOAF profile [FOAF], etc.  Each of these
+   profiles is accessible at a distinct URI.  But the user may have a
+   preference for one of those profiles, for example, because it is most
+   complete, kept up-to-date, or expected to be long-lived.
+
+   The link relation type defined in this specification allows to convey
+   to user agents that a profile URI - the identifying URI - other than
+   the one the agent is accessing - the actual URI - is preferred for
+   referencing.
+
+3.3.  Multi-Resource Publications
+
+   When publishing on the web, it is not uncommon to make distinct
+   components of a publication available as different web resources,
+   each with their own URI.  For example:
+
+   o  Contemporary scholarly publications routinely consists of a
+      traditional article as well as additional materials that are
+      considered an integral part of the publication such as
+      supplementary information, high-resolution images, a video
+      recording of an experiment.
+
+   o  Scientific or governmental open data sets frequently consist of
+      multiple files.
+
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018                [Page 4]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
+   o  Online books typically consist of multiple chapters.
+
+   While each of these components are accessible at their distinct URI -
+   the actual URI - they often also share a URI assinged to the
+   intellectual publication of which they are components - the
+   identifying URI.
+
+   The link relation type defined in this specification allows to convey
+   to user agents that, for the purpose of referencing, the identifying
+   URI of the intellectual publication is preferred over an actual URI
+   of a component of the publication.
+
+4.  The "identifier" Relation Type for Expressing a Preferred URI for
+    the Purpose of Referencing
+
+   A link with the "identifier" relation type indicates that the Target
+   IRI - the identifying URI - is preferred over the Context IRI - the
+   actual URI - for the purpose of referencing.
+
+   Because a link with the "identifier" relation type expresses a
+   preferred URI for the purpose of referencing, the actual URI SHOULD
+   only provide one link with that relation type.
+
+   Providing a link with the "identifier" relation type does not prevent
+   using the actual URI for the purpose of referencing if such
+   specificity is needed for the application at hand.  For example, in
+   the case of scenario Section 3.3 the actual URI is likely required
+   for the purpose of annotating a specific component of an intellectual
+   publication.  Yet, the annotation application may also want to
+   include a reference to the identifying URI.
+
+5.  Distinction with Other Relation Types
+
+   The following existing IANA-registered relationships are similar to
+   the relationship that "identifier" is intended to convey, but are not
+   appropriate for various reasons:
+
+   o  "alternate" [RFC4287], used to link to an alternate version of the
+      content at the Context IRI, for example the same content with
+      varying Content-Type (e.g., application/pdf vs. text/html) and/or
+      Content-Language (e.g., en vs. fr).
+
+   o  "bookmark" [W3C.REC-html5-20151028], used to convey a permanent
+      link to use for bookmarking purposes.
+
+   o  "canonical" [RFC6596], used to identify content that is either
+      duplicative or a superset of the content at the Context IRI, for
+      example a single page version of a magazine article, provided for
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018                [Page 5]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
+      indexing by search engines, of an article that is spread over
+      several pages for human use.
+
+   o  "duplicate" [RFC6249], used to link to a resource whose available
+      representations are byte-for-byte identical with the corresponding
+      representations of the context IRI, for example, an identical file
+      on a mirror site.
+
+   o  "related" [RFC4287], used to link to a related resource.
+
+   A closer inspection of these candidates [identifier-blog] shows that
+   they are not appropriate and that a new relation type is required.
+
+   In the scenario of Section 3.1 there is no content available at the
+   identifying URI as it merely redirects to the actual URI.  In the
+   scenario of Section 3.2, the content at the identifying URI is a
+   profile that is different than the profile at the actual URI.  In
+   scenario of Section 3.3 the content at the identifying URI, if any,
+   would typcially be a sort of table of contents page with links to
+   component resources and possibly a summary.  These considerations
+   exclude "alternate", "canonical", and "duplicate" as possible
+   relation types.
+
+   The intent of "bookmark" is closest related to that of "identifier"
+   in that the Target IRI of a link with this relation type is intended
+   for bookmarking, which is a case of referencing.  However, "bookmark"
+   is specifically defined for use in conjunction with the HTML
+   <article> element and is explictly excluded from use in the <link>
+   element in HTML <head>.  Since a link in <link> and one in the HTTP
+   Link header are semantically equivalent, "bookmark" is also excluded
+   from use in HTTP Link.
+
+   While "related" could be used, its semantics are too vague to convey
+   the specific nature of "identifier" as a means to convey a URI for
+   the purpose of referencing.
+
+6.  Examples
+
+   Sections Section 6.1 and Section 6.2 show examples of the use of
+   links with the "identifier" relation type.  One example shows its use
+   in a response header and body, the other in a response body only.
+
+6.1.  Persistent HTTP URI
+
+   If the context resource is a landing page for a scholarly article for
+   which the persistent HTTP URI
+   <http://persistence.example.org/738207472> was minted, then the
+
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018                [Page 6]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
+   response to an HTTP GET on the landing page's URI could be as shown
+   in Figure 1.
+
+HTTP/1.1 200 OK
+Link: <http://persistence.example.org/738207472> ; rel="identifier"
+Content-Type: text/html;charset=utf-8
+
+<html>
+ <head>
+ ...
+  <link rel="identifier" href="http://persistence.example.org/738207472" />
+ ...
+ </head>
+ <body>
+  ...
+ </body>
+</html>
+
+
+    Figure 1: Response to HTTP GET on the URI of the landing page of a
+                             scholarly article
+
+6.2.  Preferred Profile URI
+
+   If the context resource is the home page of John Doe, John can add a
+   link with the "identifier" relation type to it, as a means to convey
+   that he would preferably be referenced by means of the URI of his
+   FOAF profile.  Figure 2 shows the response to an HTTP GET on the URI
+   of John's home page.
+
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=utf-8
+
+<html>
+ <head>
+ ...
+  <link rel="identifier" href="http://johndoe.example.com/foaf" type="txt/ttl"/>
+ ...
+ </head>
+ <body>
+  ...
+ </body>
+</html>
+
+
+     Figure 2: Response to HTTP GET on the URI of John Doe's home page
+
+
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018                [Page 7]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
+7.  IANA Considerations
+
+7.1.  Link Relation Type: identifier
+
+   The link relation type below has been registered by IANA per
+   Section 6.2.1 of [RFC5988]:
+
+      Relation Name: identifier
+
+      Description: A link with the "identifier" relation type that
+      points from a Context IRI to a target IRI indicates that the
+      Target IRI is preferred over the Context IRI for the purpose of
+      referencing.
+
+      Reference: [[ This document ]]
+
+8.  Security Considerations
+
+   There are no additional security concerns introduced by this
+   document.
+
+9.  References
+
+9.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <http://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC4287]  Nottingham, M., Ed. and R. Sayre, Ed., "The Atom
+              Syndication Format", RFC 4287, DOI 10.17487/RFC4287,
+              December 2005, <http://www.rfc-editor.org/info/rfc4287>.
+
+   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
+              DOI 10.17487/RFC5988, October 2010,
+              <http://www.rfc-editor.org/info/rfc5988>.
+
+   [RFC6249]  Bryan, A., McNab, N., Tsujikawa, T., Poeml, P., and H.
+              Nordstrom, "Metalink/HTTP: Mirrors and Hashes", RFC 6249,
+              DOI 10.17487/RFC6249, June 2011,
+              <http://www.rfc-editor.org/info/rfc6249>.
+
+   [RFC6596]  Ohye, M. and J. Kupke, "The Canonical Link Relation",
+              RFC 6596, DOI 10.17487/RFC6596, April 2012,
+              <http://www.rfc-editor.org/info/rfc6596>.
+
+
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018                [Page 8]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
+   [W3C.REC-html5-20151028]
+              Hickson, I., Berjon, R., Faulkner, S., Leithead, T., Doyle
+              Navara, E., O'Connor, E., and S. Pfeiffer, "HTML5", World
+              Wide Web Consortium Recommendation REC-HTML5-20141028,
+              October 2014.
+
+9.2.  Informative References
+
+   [CoolURIs]
+              Berners-Lee, T., "Cool URIs don't change", World Wide Web
+              Consortium <https://www.w3.org/Provider/Style/URI.html>,
+              1998.
+
+   [DOI-URLs]
+              Hendricks, G., "Display guidelines for Crossref DOIs",
+              Crossref blog <https://blog.crossref.org/display-
+              guidelines/>, June 2017.
+
+   [DOIs]     "Information and documentation - Digital object identifier
+              system", ISO 26324:2012(en), 2012.
+
+   [draft-kunze-ark-18]
+              Kunze, J. and R. Rodgers, "The ARK Identifier Scheme",
+              Internet Draft draft-kunze-ark-18, April 2013.
+
+   [FOAF]     Brickley, D. and L. Miller, "FOAF Vocabulary Specification
+              0.99", January 2014.
+
+   [identifier-blog]
+              Nelson, M., "Linking to Persistent Identifiers with
+              rel="identifier"", Web Science and Digital Library
+              Research Group Blog <http://ws-
+              dl.blogspot.nl/2016/11/2016-11-07-linking-to-
+              persistent.html>, July 2016.
+
+   [PIDs-must-be-used]
+              Van de Sompel, H., Klein, M., and S. Jones, "Persistent
+              URIs Must Be Used To Be Persistent",
+              arXiv.org <http://arxiv.org/1602.09102>, February 2016.
+
+   [PURLs]    "Persistent uniform resource locator", Wikipedia
+              <https://en.wikipedia.org/wiki/
+              Persistent_uniform_resource_locator>, April 2017.
+
+
+
+
+
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018                [Page 9]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
+Authors' Addresses
+
+   Herbert Van de Sompel
+   Los Alamos National Laboratory
+
+   Email: herbertv@lanl.gov
+   URI:   http://public.lanl.gov/herbertv/
+
+
+   Michael Nelson
+   Old Dominion University
+
+   Email: mln@cs.odu.edu
+   URI:   http://www.cs.odu.edu/~mln/
+
+
+   John Kunze
+   California Digital Library
+
+   Email: John.Kunze@ucop.edu
+   URI:   http://www.cdlib.org/contact/staff_directory/jkunze.html
+
+
+   Simeon Warner
+   Cornell University
+
+   Email: simeon.warner@cornell.edu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Van de Sompel, et al.   Expires January 11, 2018               [Page 10]
