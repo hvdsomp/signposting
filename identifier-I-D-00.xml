@@ -332,7 +332,7 @@ Content-Type: text/html;charset=utf-8
 &RFC6249;
 &I-D.nottingham-rfc5988bis;
 
-            <reference anchor="W3C.REC-html5-20151028">
+            <reference anchor="W3C.REC-html5-20151028" target="https://www.w3.org/TR/2014/REC-html5-20141028/">
                 <front>
                     <title abbrev="HTML5">HTML5</title>
                     <author initials="I." surname="Hickson" fullname="Ian Hickson"/>
@@ -351,103 +351,75 @@ Content-Type: text/html;charset=utf-8
         
         <references title="Informative References">
             
-          <reference anchor="CoolURIs">
+            <reference anchor="CoolURIs" target="https://www.w3.org/Provider/Style/URI.html">
               <front>
                   <title abbrev="Cool URIs">Cool URIs don't change</title>
                   <author initials="T." surname="Berners-Lee" fullname="Tim Berners-Lee"/>
                   <date year="1998"/>
-                  <!--
-                  <uri>https://www.w3.org/Provider/Style/URI.html</uri>
-                  -->
               </front>
-              <seriesInfo name="World Wide Web Consortium" value="&lt;https://www.w3.org/Provider/Style/URI.html&gt;"/>
+              <seriesInfo name="World Wide Web Consortium" value="Style"/>
           </reference>  
-          <reference anchor="DOIs">
+            <reference anchor="DOIs" target="https://www.iso.org/obp/ui/#iso:std:iso:26324:ed-1:v1:en">
               <front>
                   <title abbrev="DOI system">Information and documentation - Digital object identifier system</title>
                   <author fullname="ISO" />
                   <date year="2012"/>
-                  <!--
-                  <uri>https://www.iso.org/obp/ui/#iso:std:iso:26324:ed-1:v1:en</uri>
-                  -->
               </front>
               <seriesInfo name="ISO" value="26324:2012(en)"/>
           </reference>
-          <reference anchor="DOI-URLs">
+            <reference anchor="DOI-URLs" target="https://blog.crossref.org/display-guidelines/">
               <front>
                   <title abbrev="Displaying DOIs">Display guidelines for Crossref DOIs</title>
                   <author initials="G." surname="Hendricks" fullname="Ginny Hendricks" />
                   <date month="June" day="20" year="2017"/>
-                  <!--
-                  <uri>https://blog.crossref.org/display-guidelines/</uri>
-                  -->
               </front>
-              <seriesInfo name="Crossref blog" value="&lt;https://blog.crossref.org/display-guidelines/&gt;"/>
           </reference>
           
-            <reference anchor="identifier-blog">
+            <reference anchor="identifier-blog" target="http://ws-dl.blogspot.nl/2016/11/2016-11-07-linking-to-persistent.html">
                 <front>
                     <title abbrev="PID Linking">Linking to Persistent Identifiers with rel="identifier"</title>
                     <author initials="M.L." surname="Nelson" fullname="Michael L. Nelson"/>
                     <date month="July" day="11" year="2016"/>
-                    <!--
-                  <uri>http://ws-dl.blogspot.nl/2016/11/2016-11-07-linking-to-persistent.html</uri>
-                  -->
                 </front>
-                <seriesInfo name="Web Science and Digital Library Research Group Blog" value="&lt;http://ws-dl.blogspot.nl/2016/11/2016-11-07-linking-to-persistent.html&gt;"/>
             </reference>
           
-          <reference anchor="draft-kunze-ark-18">
+            <reference anchor="draft-kunze-ark-18" target="https://datatracker.ietf.org/doc/html/draft-kunze-ark">
               <front>
                   <title abbrev="ARK Scheme">The ARK Identifier Scheme</title>
                   <author initials="J." surname="Kunze" fullname="John Kunze"/>
                   <author initials="R." surname="Rodgers" fullname="R. Rodgers"/>
                   <date month="April" year="2013"/>
-                  <!--
-                  <uri>https://datatracker.ietf.org/doc/html/draft-kunze-ark</uri>
-                  -->
               </front>
               <seriesInfo name="Internet Draft" value="draft-kunze-ark-18"/>
           </reference>
             
-          <reference anchor="PURLs">
+            <reference anchor="PURLs" target="https://en.wikipedia.org/wiki/Persistent_uniform_resource_locator">
               <front>
                   <title abbrev="PURL">Persistent uniform resource locator</title>
                   <author fullname="Wikipedia" />
                   <date day="5" month="April" year="2017"/>
-                  <!--
-                  <uri>https://en.wikipedia.org/wiki/Persistent_uniform_resource_locator</uri>
-                  -->
               </front>
-              <seriesInfo name="Wikipedia" value="&lt;https://en.wikipedia.org/wiki/Persistent_uniform_resource_locator&gt;"/>
           </reference>
-          <reference anchor="PIDs-must-be-used">
+            <reference anchor="PIDs-must-be-used" target="http://arxiv.org/1602.09102">
               <front>
                   <title abbrev="PIDs Must Be Used">Persistent URIs Must Be Used To Be Persistent</title>
                   <author initials="H." surname="Van de Sompel" fullname="Herbert Van de Sompel"/>
                   <author initials="M." surname="Klein" fullname="Martin Klein"/>
                   <author initials="S." surname="Jones" fullname="Shawn Jones"/>
                   <date month="February" year="2016"/>
-                  <!--
-                  <uri>http://arxiv.org/1602.09102</uri>
-                  -->
               </front>
-              <seriesInfo name="arXiv.org" value="&lt;http://arxiv.org/1602.09102&gt;"/>
           </reference>
             
-          <reference anchor="FOAF">
+            <reference anchor="FOAF" target="http://xmlns.com/foaf/spec/">
               <front>
                   <title abbrev="FOAF Spec">FOAF Vocabulary Specification 0.99</title>
                   <author initials="D." surname="Brickley" fullname="Dan Brickley"/>
                   <author initials="L." surname="Miller" fullname="Libby Miller"/>
                   <date month="January" year="2014"/>
-                  <!--
-                  <uri>http://xmlns.com/foaf/spec/</uri>
-                  -->
               </front>
           </reference>
             
-            <reference anchor="W3C.REC-annotation-model-20170223">
+            <reference anchor="W3C.REC-annotation-model-20170223" target="https://www.w3.org/TR/2017/REC-annotation-model-20170223/">
                 <front>
                     <title abbrev="HTML5">Web Annotation Data Model</title>
                     <author initials="R." surname="Sanderson" fullname="Robert Sanderson"/>
@@ -467,3 +439,5 @@ Content-Type: text/html;charset=utf-8
 -->
     </back>
 </rfc>
+
+
