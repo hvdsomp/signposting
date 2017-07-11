@@ -481,22 +481,22 @@ Internet-Draft             Identifier Relation                 July 2017
               Hickson, I., Berjon, R., Faulkner, S., Leithead, T., Doyle
               Navara, E., O'Connor, E., and S. Pfeiffer, "HTML5", World
               Wide Web Consortium Recommendation REC-HTML5-20141028,
-              October 2014.
+              October 2014, <https://www.w3.org/TR/2014/REC-
+              html5-20141028/>.
 
 9.2.  Informative References
 
    [CoolURIs]
               Berners-Lee, T., "Cool URIs don't change", World Wide Web
-              Consortium <https://www.w3.org/Provider/Style/URI.html>,
-              1998.
+              Consortium Style, 1998,
+              <https://www.w3.org/Provider/Style/URI.html>.
 
    [DOI-URLs]
               Hendricks, G., "Display guidelines for Crossref DOIs",
-              Crossref blog <https://blog.crossref.org/display-
-              guidelines/>, June 2017.
+              June 2017, <https://blog.crossref.org/display-
+              guidelines/>.
 
-   [DOIs]     "Information and documentation - Digital object identifier
-              system", ISO 26324:2012(en), 2012.
+
 
 
 
@@ -507,34 +507,40 @@ Van de Sompel, et al.   Expires January 12, 2018                [Page 9]
 Internet-Draft             Identifier Relation                 July 2017
 
 
+   [DOIs]     "Information and documentation - Digital object identifier
+              system", ISO 26324:2012(en), 2012,
+              <https://www.iso.org/obp/ui/#iso:std:iso:26324:ed-
+              1:v1:en>.
+
    [draft-kunze-ark-18]
               Kunze, J. and R. Rodgers, "The ARK Identifier Scheme",
-              Internet Draft draft-kunze-ark-18, April 2013.
+              Internet Draft draft-kunze-ark-18, April 2013,
+              <https://datatracker.ietf.org/doc/html/draft-kunze-ark>.
 
    [FOAF]     Brickley, D. and L. Miller, "FOAF Vocabulary Specification
-              0.99", January 2014.
+              0.99", January 2014, <http://xmlns.com/foaf/spec/>.
 
    [identifier-blog]
               Nelson, M., "Linking to Persistent Identifiers with
-              rel="identifier"", Web Science and Digital Library
-              Research Group Blog <http://ws-
+              rel="identifier"", July 2016, <http://ws-
               dl.blogspot.nl/2016/11/2016-11-07-linking-to-
-              persistent.html>, July 2016.
+              persistent.html>.
 
    [PIDs-must-be-used]
               Van de Sompel, H., Klein, M., and S. Jones, "Persistent
-              URIs Must Be Used To Be Persistent",
-              arXiv.org <http://arxiv.org/1602.09102>, February 2016.
+              URIs Must Be Used To Be Persistent", February 2016,
+              <http://arxiv.org/1602.09102>.
 
-   [PURLs]    "Persistent uniform resource locator", Wikipedia
+   [PURLs]    "Persistent uniform resource locator", April 2017,
               <https://en.wikipedia.org/wiki/
-              Persistent_uniform_resource_locator>, April 2017.
+              Persistent_uniform_resource_locator>.
 
    [W3C.REC-annotation-model-20170223]
               Sanderson, R., Ciccarese, P., and B. Young, "Web
               Annotation Data Model", World Wide Web
               Consortium Recommendation REC-annotation-model-20170223,
-              February 2017.
+              February 2017, <https://www.w3.org/TR/2017/REC-annotation-
+              model-20170223/>.
 
 Authors' Addresses
 
@@ -544,12 +550,6 @@ Authors' Addresses
    Email: herbertv@lanl.gov
    URI:   http://public.lanl.gov/herbertv/
 
-
-   Michael Nelson
-   Old Dominion University
-
-   Email: mln@cs.odu.edu
-   URI:   http://www.cs.odu.edu/~mln/
 
 
 
@@ -563,6 +563,13 @@ Van de Sompel, et al.   Expires January 12, 2018               [Page 10]
 Internet-Draft             Identifier Relation                 July 2017
 
 
+   Michael Nelson
+   Old Dominion University
+
+   Email: mln@cs.odu.edu
+   URI:   http://www.cs.odu.edu/~mln/
+
+
    John Kunze
    California Digital Library
 
@@ -574,13 +581,6 @@ Internet-Draft             Identifier Relation                 July 2017
    Cornell University
 
    Email: simeon.warner@cornell.edu
-
-
-
-
-
-
-
 
 
 
