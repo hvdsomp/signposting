@@ -57,7 +57,7 @@
                 <uri>https://orcid.org/0000-0002-7970-7855</uri>
             </address>
         </author>
-        <date day="11" month="July" year="2017"/>
+        <date day="12" month="July" year="2017"/>
         <abstract>
             <t>This specification defines a link relation type that is intended 
                 to convey that a URI, other than the URI that provides a link 
@@ -88,7 +88,7 @@
             <t><list style="symbols">
                 <t>&quot;access URI&quot;: A URI at which a user agent accesses a web resource. 
                 </t>
-                <t>&quot;reference URI&quot;: A URI, other than the access URI,  
+                <t>&quot;identifying URI&quot;: A URI, other than the access URI,  
                     that should preferentially be used for referencing.
                 </t>
             </list></t> 
@@ -104,10 +104,10 @@
             <t><list style="symbols">
                 <t>Accepting the reality that the web location of a resource - the access URI - 
                     may change over time.</t>
-                <t>Minting an additional URI for the resource - the reference URI - that is specifically 
+                <t>Minting an additional URI for the resource - the identifying URI - that is specifically 
                     intended to remain persistent over time.</t>
                 <t>Redirecting (typically &quot;HTTP 301 Moved Permanently&quot;, &quot;HTTP 302 Found&quot;, 
-                    or &quot;HTTP 303 See Other&quot;) from the reference URI to the access URI.</t>
+                    or &quot;HTTP 303 See Other&quot;) from the identifying URI to the access URI.</t>
                 <t>As a community, committing to adjust that redirection whenever the access URI changes 
                     over time.</t>
             </list></t>
@@ -126,12 +126,12 @@
             </list></t>
                 <t>In order for the investments in infrastructure involved in these approaches to pay off, 
                 and hence for links to effectively remain operational as intended, it is crucial that a resource 
-                be referenced by means of its reference URI. However, the access URI is where 
+                be referenced by means of its identifying URI. However, the access URI is where 
                 a user agent actually accesses the resource (e.g. it is the URI in the browser's address bar). 
-                As such, there is a considerable risk that the access URI instead of the reference URI 
+                As such, there is a considerable risk that the access URI instead of the identifying URI 
                 is used for referencing <xref target="PIDs-must-be-used"/>.</t>
                 <t>The link relation type defined in this specification allows to 
-                convey to user agents that the reference URI is the preferred URI for referencing. 
+                convey to user agents that the identifying URI is the preferred URI for referencing. 
                 Applications such as bookmarking tools, citation managers, and webometrics can take this preference 
                 into account when recording a URI.
                </t>
@@ -145,7 +145,7 @@
                     kept up-to-date, or expected to be long-lived.          
                 </t>
                 <t>The link relation type defined in this specification allows to convey to user agents that 
-                    a profile URI - the reference URI - other than the one the agent is 
+                    a profile URI - the identifying URI - other than the one the agent is 
                 accessing - the access URI - is preferred for referencing.</t>
             </section>
             <section title="Multi-Resource Publications" anchor="ORE">
@@ -160,9 +160,9 @@
                <t>Online books typically consist of multiple chapters.</t>
                 </list></t>
                 <t>While each of these components are accessible at their distinct URI - the access URI - they often also 
-                    share a URI assinged to the intellectual publication of which they are components - the reference URI.</t> 
+                    share a URI assinged to the intellectual publication of which they are components - the identifying URI.</t> 
                 <t>The link relation type defined in this specification allows to 
-                    convey to user agents that, for the purpose of referencing, the reference URI of the intellectual publication  
+                    convey to user agents that, for the purpose of referencing, the identifying URI of the intellectual publication  
                 is preferred over an access URI of a component of the publication.
                 </t>
             </section>
@@ -170,26 +170,28 @@
         <section title="The &quot;identifier&quot; Relation Type for Expressing a Preferred URI for the Purpose of Referencing" anchor="identifier-link-relation">
             <t>A link with the "identifier" relation type indicates that the link target is preferred over 
                 the link context for the purpose of referencing.</t>
-            <t>It is RECOMMENDED for reference URIs 
+            <t>It is RECOMMENDED for identifying URIs 
                 to support protocol-based access as a means to ensure that applications that 
-                store reference URIs can effectively re-use them for access.</t>
+                store identifying URIs can effectively re-use them for access.</t>
             <t>Because a link with the "identifier" relation type expresses a preferred URI for the purpose of 
                 referencing, the access URI SHOULD only provide one link with that relation type. 
             If more than one "identifier" link is provided, the user agent may decide to select one
-            (e.g. an HTTP URI over a mailto URI), for example, based on the purpose that the reference URI will serve.</t> 
+            (e.g. an HTTP URI over a mailto URI), for example, based on the purpose that the identifying URI will serve.</t> 
             <t>Providing a link with the "identifier" relation type does not prevent using the access URI 
                 for the purpose of referencing if such specificity is needed for the application at hand.  
                 For example, in the case of scenario <xref target="ORE"/> the access URI is likely required for the 
                 purpose of annotating a specific component of an intellectual publication. Yet, the annotation application 
-                may also want to appropriately include the reference URI, e.g. using the "canonical" relation defined in 
-                the Web Annotation Data Model <xref target="W3C.REC-annotation-model-20170223"/>.</t>
+                may also want to appropriately include the identifying URI in the annotation. 
+                <!-- , e.g. using the "canonical" relation defined in 
+                the Web Annotation Data Model <xref target="W3C.REC-annotation-model-20170223"/> -->
+            </t>
         </section>
         <section title="Distinction with Other Relation Types" anchor="other-relations">
             <t>The following existing IANA-registered relationships are similar to the relationship that 
                 "identifier" is intended to convey, but are not appropriate for various reasons:</t>
             <t><list style="symbols">
                 <t>"alternate" <xref target="RFC4287"/>, used to link to an alternate version of 
-                    the content at the Context IRI, for example the same content with varying 
+                    the content at the link context, for example the same content with varying 
                     Content-Type (e.g., application/pdf vs. text/html) and/or Content-Language 
                     (e.g., en vs. fr).
                 </t>
@@ -197,14 +199,14 @@
                     permanent link to use for bookmarking purposes.
                 </t>
                 <t>"canonical" <xref target="RFC6596"/>, used to identify content that is 
-                    either duplicative or a superset of the content at the Context IRI, 
+                    either duplicative or a superset of the content at the link context, 
                     for example a single page version of a magazine article, provided
                     for indexing by search engines, of an article that is spread over 
                     several pages for human use.
                 </t>
                 <t>"duplicate" <xref target="RFC6249"/>, used to link to a resource whose 
                     available representations are byte-for-byte identical with the 
-                    corresponding representations of the context IRI, for example, 
+                    corresponding representations of the link context, for example, 
                     an identical file on a mirror site.
                 </t>
                 <t>"related" <xref target="RFC4287"/>, used to link to a related resource.
@@ -213,21 +215,21 @@
             <t>A closer inspection of these candidates <xref target="identifier-blog"/> shows 
                 that they are not appropriate and that a new relation type is required.</t>
                     <t>In the scenario of <xref target="PIDs"/> there is no content available 
-                        at the reference URI as it merely redirects to the access URI. 
+                        at the identifying URI as it merely redirects to the access URI. 
                         In the scenario of <xref target="ORCID"/>, the content at the 
-                        reference URI is a profile that is different than the profile at the 
-                        access URI. In scenario of <xref target="ORE"/> the 
-                        content at the reference URI, if any, would typcially be a sort of 
-                        table of contents page with links to component resources and possibly 
+                        identifying URI is a profile that is different than the profile at the 
+                        access URI. In the scenario of <xref target="ORE"/> the 
+                        content at the identifying URI, if any, would typcially be a sort of 
+                        table of contents with links to component resources and possibly 
                         a summary. These considerations exclude "alternate", 
                         "canonical", and "duplicate" as possible relation types.</t>
                     <t>The intent of "bookmark" is closest related to that of "identifier" 
-                        in that the Target IRI of a link with this relation type is intended for 
+                        in that the link target of a link with this relation type is intended for 
                         bookmarking, which is a case of referencing. However, "bookmark" 
                         is specifically defined for use in conjunction with the HTML 
                         &lt;article&gt; element and is explictly excluded from use in the 
                         &lt;link&gt; element in HTML &lt;head&gt;. Since a link in 
-                        &lt;link&gt; and one in the HTTP Link header are semantically equivalent, 
+                        &lt;link&gt; and a link in the HTTP Link header are semantically equivalent, 
                         "bookmark" is also excluded from use in HTTP Link.
                     </t>
                     <t>While "related" could be used, its semantics are too vague 
@@ -314,7 +316,7 @@ Content-Type: text/html;charset=utf-8
         <section title="Security Considerations" anchor="security-considerations">
             <t>A site might use the "identifier" link relation with inaccurate or misleading 
                 information about which URI to use for referencing. Since cases exist in which 
-                it may not be possible to automatically verify the correctness of the reference URI, 
+                it may not be possible to automatically verify the correctness of the identifying URI, 
                 out-of-band mechanisms might be required to establish trust.</t>   
              <t>If a trusted site is compromised, the "identifier" link relation could be 
                  used with malicious intent to supply misleading URIs for referencing. 
@@ -419,7 +421,7 @@ Content-Type: text/html;charset=utf-8
                   <date month="January" year="2014"/>
               </front>
           </reference>
-            
+ <!--           
             <reference anchor="W3C.REC-annotation-model-20170223" target="https://www.w3.org/TR/2017/REC-annotation-model-20170223/">
                 <front>
                     <title abbrev="HTML5">Web Annotation Data Model</title>
@@ -430,7 +432,7 @@ Content-Type: text/html;charset=utf-8
                 </front>
                 <seriesInfo name="World Wide Web Consortium" value="Recommendation REC-annotation-model-20170223"/>
             </reference>
-            
+-->
       </references>
    
 <!--
@@ -440,5 +442,7 @@ Content-Type: text/html;charset=utf-8
 -->
     </back>
 </rfc>
+
+
 
 
