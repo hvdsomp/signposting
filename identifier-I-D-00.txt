@@ -6,12 +6,12 @@
 Network Working Group                                   H. Van de Sompel
 Internet-Draft                            Los Alamos National Laboratory
 Intended status: Informational                                 M. Nelson
-Expires: January 12, 2018                        Old Dominion University
+Expires: January 13, 2018                        Old Dominion University
                                                                 J. Kunze
                                               California Digital Library
                                                                S. Warner
                                                       Cornell University
-                                                           July 11, 2017
+                                                           July 12, 2017
 
 
  Identifier: A Link Relation to Convey a Preferred URI for Referencing
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 12, 2018.
+   This Internet-Draft will expire on January 13, 2018.
 
 Copyright Notice
 
@@ -54,7 +54,7 @@ Copyright Notice
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018                [Page 1]
+Van de Sompel, et al.   Expires January 13, 2018                [Page 1]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -110,7 +110,7 @@ Table of Contents
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018                [Page 2]
+Van de Sompel, et al.   Expires January 13, 2018                [Page 2]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -125,7 +125,7 @@ Internet-Draft             Identifier Relation                 July 2017
 
    o  "access URI": A URI at which a user agent accesses a web resource.
 
-   o  "reference URI": A URI, other than the access URI, that should
+   o  "identifying URI": A URI, other than the access URI, that should
       preferentially be used for referencing.
 
    By interacting with the access URI, the user agent may discover typed
@@ -143,11 +143,11 @@ Internet-Draft             Identifier Relation                 July 2017
    o  Accepting the reality that the web location of a resource - the
       access URI - may change over time.
 
-   o  Minting an additional URI for the resource - the reference URI -
+   o  Minting an additional URI for the resource - the identifying URI -
       that is specifically intended to remain persistent over time.
 
    o  Redirecting (typically "HTTP 301 Moved Permanently", "HTTP 302
-      Found", or "HTTP 303 See Other") from the reference URI to the
+      Found", or "HTTP 303 See Other") from the identifying URI to the
       access URI.
 
    o  As a community, committing to adjust that redirection whenever the
@@ -166,7 +166,7 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018                [Page 3]
+Van de Sompel, et al.   Expires January 13, 2018                [Page 3]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -182,14 +182,14 @@ Internet-Draft             Identifier Relation                 July 2017
    In order for the investments in infrastructure involved in these
    approaches to pay off, and hence for links to effectively remain
    operational as intended, it is crucial that a resource be referenced
-   by means of its reference URI.  However, the access URI is where a
+   by means of its identifying URI.  However, the access URI is where a
    user agent actually accesses the resource (e.g. it is the URI in the
    browser's address bar).  As such, there is a considerable risk that
-   the access URI instead of the reference URI is used for referencing
+   the access URI instead of the identifying URI is used for referencing
    [PIDs-must-be-used].
 
    The link relation type defined in this specification allows to convey
-   to user agents that the reference URI is the preferred URI for
+   to user agents that the identifying URI is the preferred URI for
    referencing.  Applications such as bookmarking tools, citation
    managers, and webometrics can take this preference into account when
    recording a URI.
@@ -204,7 +204,7 @@ Internet-Draft             Identifier Relation                 July 2017
    complete, kept up-to-date, or expected to be long-lived.
 
    The link relation type defined in this specification allows to convey
-   to user agents that a profile URI - the reference URI - other than
+   to user agents that a profile URI - the identifying URI - other than
    the one the agent is accessing - the access URI - is preferred for
    referencing.
 
@@ -222,7 +222,7 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018                [Page 4]
+Van de Sompel, et al.   Expires January 13, 2018                [Page 4]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -234,11 +234,11 @@ Internet-Draft             Identifier Relation                 July 2017
 
    While each of these components are accessible at their distinct URI -
    the access URI - they often also share a URI assinged to the
-   intellectual publication of which they are components - the reference
-   URI.
+   intellectual publication of which they are components - the
+   identifying URI.
 
    The link relation type defined in this specification allows to convey
-   to user agents that, for the purpose of referencing, the reference
+   to user agents that, for the purpose of referencing, the identifying
    URI of the intellectual publication is preferred over an access URI
    of a component of the publication.
 
@@ -249,16 +249,16 @@ Internet-Draft             Identifier Relation                 July 2017
    target is preferred over the link context for the purpose of
    referencing.
 
-   It is RECOMMENDED for reference URIs to support protocol-based access
-   as a means to ensure that applications that store reference URIs can
-   effectively re-use them for access.
+   It is RECOMMENDED for identifying URIs to support protocol-based
+   access as a means to ensure that applications that store identifying
+   URIs can effectively re-use them for access.
 
    Because a link with the "identifier" relation type expresses a
    preferred URI for the purpose of referencing, the access URI SHOULD
    only provide one link with that relation type.  If more than one
    "identifier" link is provided, the user agent may decide to select
    one (e.g. an HTTP URI over a mailto URI), for example, based on the
-   purpose that the reference URI will serve.
+   purpose that the identifying URI will serve.
 
    Providing a link with the "identifier" relation type does not prevent
    using the access URI for the purpose of referencing if such
@@ -266,9 +266,7 @@ Internet-Draft             Identifier Relation                 July 2017
    the case of scenario Section 3.3 the access URI is likely required
    for the purpose of annotating a specific component of an intellectual
    publication.  Yet, the annotation application may also want to
-   appropriately include the reference URI, e.g. using the "canonical"
-   relation defined in the Web Annotation Data Model
-   [W3C.REC-annotation-model-20170223].
+   appropriately include the identifying URI in the annotation.
 
 5.  Distinction with Other Relation Types
 
@@ -278,13 +276,15 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018                [Page 5]
+
+
+Van de Sompel, et al.   Expires January 13, 2018                [Page 5]
 
 Internet-Draft             Identifier Relation                 July 2017
 
 
    o  "alternate" [RFC4287], used to link to an alternate version of the
-      content at the Context IRI, for example the same content with
+      content at the link context, for example the same content with
       varying Content-Type (e.g., application/pdf vs. text/html) and/or
       Content-Language (e.g., en vs. fr).
 
@@ -292,15 +292,15 @@ Internet-Draft             Identifier Relation                 July 2017
       link to use for bookmarking purposes.
 
    o  "canonical" [RFC6596], used to identify content that is either
-      duplicative or a superset of the content at the Context IRI, for
+      duplicative or a superset of the content at the link context, for
       example a single page version of a magazine article, provided for
       indexing by search engines, of an article that is spread over
       several pages for human use.
 
    o  "duplicate" [RFC6249], used to link to a resource whose available
       representations are byte-for-byte identical with the corresponding
-      representations of the context IRI, for example, an identical file
-      on a mirror site.
+      representations of the link context, for example, an identical
+      file on a mirror site.
 
    o  "related" [RFC4287], used to link to a related resource.
 
@@ -308,23 +308,23 @@ Internet-Draft             Identifier Relation                 July 2017
    they are not appropriate and that a new relation type is required.
 
    In the scenario of Section 3.1 there is no content available at the
-   reference URI as it merely redirects to the access URI.  In the
-   scenario of Section 3.2, the content at the reference URI is a
-   profile that is different than the profile at the access URI.  In
-   scenario of Section 3.3 the content at the reference URI, if any,
-   would typcially be a sort of table of contents page with links to
+   identifying URI as it merely redirects to the access URI.  In the
+   scenario of Section 3.2, the content at the identifying URI is a
+   profile that is different than the profile at the access URI.  In the
+   scenario of Section 3.3 the content at the identifying URI, if any,
+   would typcially be a sort of table of contents with links to
    component resources and possibly a summary.  These considerations
    exclude "alternate", "canonical", and "duplicate" as possible
    relation types.
 
    The intent of "bookmark" is closest related to that of "identifier"
-   in that the Target IRI of a link with this relation type is intended
+   in that the link target of a link with this relation type is intended
    for bookmarking, which is a case of referencing.  However, "bookmark"
    is specifically defined for use in conjunction with the HTML
    <article> element and is explictly excluded from use in the <link>
-   element in HTML <head>.  Since a link in <link> and one in the HTTP
-   Link header are semantically equivalent, "bookmark" is also excluded
-   from use in HTTP Link.
+   element in HTML <head>.  Since a link in <link> and a link in the
+   HTTP Link header are semantically equivalent, "bookmark" is also
+   excluded from use in HTTP Link.
 
    While "related" could be used, its semantics are too vague to convey
    the specific nature of "identifier" as a means to convey a URI for
@@ -334,7 +334,7 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018                [Page 6]
+Van de Sompel, et al.   Expires January 13, 2018                [Page 6]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -390,7 +390,7 @@ Content-Type: text/html;charset=utf-8
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018                [Page 7]
+Van de Sompel, et al.   Expires January 13, 2018                [Page 7]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -432,8 +432,8 @@ Content-Type: text/html;charset=utf-8
    A site might use the "identifier" link relation with inaccurate or
    misleading information about which URI to use for referencing.  Since
    cases exist in which it may not be possible to automatically verify
-   the correctness of the reference URI, out-of-band mechanisms might be
-   required to establish trust.
+   the correctness of the identifying URI, out-of-band mechanisms might
+   be required to establish trust.
 
    If a trusted site is compromised, the "identifier" link relation
    could be used with malicious intent to supply misleading URIs for
@@ -446,7 +446,7 @@ Content-Type: text/html;charset=utf-8
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018                [Page 8]
+Van de Sompel, et al.   Expires January 13, 2018                [Page 8]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -502,7 +502,7 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018                [Page 9]
+Van de Sompel, et al.   Expires January 13, 2018                [Page 9]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -535,13 +535,6 @@ Internet-Draft             Identifier Relation                 July 2017
               <https://en.wikipedia.org/wiki/
               Persistent_uniform_resource_locator>.
 
-   [W3C.REC-annotation-model-20170223]
-              Sanderson, R., Ciccarese, P., and B. Young, "Web
-              Annotation Data Model", World Wide Web
-              Consortium Recommendation REC-annotation-model-20170223,
-              February 2017, <https://www.w3.org/TR/2017/REC-annotation-
-              model-20170223/>.
-
 Authors' Addresses
 
    Herbert Van de Sompel
@@ -551,23 +544,23 @@ Authors' Addresses
    URI:   http://public.lanl.gov/herbertv/
 
 
-
-
-
-
-
-
-
-Van de Sompel, et al.   Expires January 12, 2018               [Page 10]
-
-Internet-Draft             Identifier Relation                 July 2017
-
-
    Michael Nelson
    Old Dominion University
 
    Email: mln@cs.odu.edu
    URI:   http://www.cs.odu.edu/~mln/
+
+
+
+
+
+
+
+
+
+Van de Sompel, et al.   Expires January 13, 2018               [Page 10]
+
+Internet-Draft             Identifier Relation                 July 2017
 
 
    John Kunze
@@ -581,6 +574,7 @@ Internet-Draft             Identifier Relation                 July 2017
    Cornell University
 
    Email: simeon.warner@cornell.edu
+   URI:   https://orcid.org/0000-0002-7970-7855
 
 
 
@@ -614,4 +608,10 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 12, 2018               [Page 11]
+
+
+
+
+
+
+Van de Sompel, et al.   Expires January 13, 2018               [Page 11]
