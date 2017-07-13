@@ -6,12 +6,12 @@
 Network Working Group                                   H. Van de Sompel
 Internet-Draft                            Los Alamos National Laboratory
 Intended status: Informational                                 M. Nelson
-Expires: January 13, 2018                        Old Dominion University
+Expires: January 14, 2018                        Old Dominion University
                                                                 J. Kunze
                                               California Digital Library
                                                                S. Warner
                                                       Cornell University
-                                                           July 12, 2017
+                                                           July 13, 2017
 
 
  Identifier: A Link Relation to Convey a Preferred URI for Referencing
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 13, 2018.
+   This Internet-Draft will expire on January 14, 2018.
 
 Copyright Notice
 
@@ -54,7 +54,7 @@ Copyright Notice
 
 
 
-Van de Sompel, et al.   Expires January 13, 2018                [Page 1]
+Van de Sompel, et al.   Expires January 14, 2018                [Page 1]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -79,15 +79,15 @@ Table of Contents
      3.3.  Multi-Resource Publications . . . . . . . . . . . . . . .   4
    4.  The "identifier" Relation Type for Expressing a Preferred URI
        for the Purpose of Referencing  . . . . . . . . . . . . . . .   5
-   5.  Distinction with Other Relation Types . . . . . . . . . . . .   5
+   5.  Distinction with Other Relation Types . . . . . . . . . . . .   6
    6.  Examples  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
      6.1.  Persistent HTTP URI . . . . . . . . . . . . . . . . . . .   7
      6.2.  Preferred Profile URI . . . . . . . . . . . . . . . . . .   7
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
      7.1.  Link Relation Type: identifier  . . . . . . . . . . . . .   8
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   9
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   9
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
      9.2.  Informative References  . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  10
 
@@ -110,7 +110,7 @@ Table of Contents
 
 
 
-Van de Sompel, et al.   Expires January 13, 2018                [Page 2]
+Van de Sompel, et al.   Expires January 14, 2018                [Page 2]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -166,7 +166,7 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 13, 2018                [Page 3]
+Van de Sompel, et al.   Expires January 14, 2018                [Page 3]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -222,7 +222,7 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 13, 2018                [Page 4]
+Van de Sompel, et al.   Expires January 14, 2018                [Page 4]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -233,7 +233,7 @@ Internet-Draft             Identifier Relation                 July 2017
    o  Online books typically consist of multiple chapters.
 
    While each of these components are accessible at their distinct URI -
-   the access URI - they often also share a URI assinged to the
+   the access URI - they often also share a URI assigned to the
    intellectual publication of which they are components - the
    identifying URI.
 
@@ -249,9 +249,16 @@ Internet-Draft             Identifier Relation                 July 2017
    target is preferred over the link context for the purpose of
    referencing.
 
-   It is RECOMMENDED for identifying URIs to support protocol-based
-   access as a means to ensure that applications that store identifying
-   URIs can effectively re-use them for access.
+   An identifying URI SHOULD support protocol-based access as a means to
+   ensure that applications that store identifying URIs can effectively
+   re-use them for access.
+
+   An identifying URI SHOULD provide the ability for a user agent to
+   follow its nose back to the access URI, e.g. by following redirects
+   and/or links.  This helps a user agent to establish trust in the
+   identifying URI.  In cases where there is no way for the agent to
+   automatically verify the correctness of the identifying URI, out-of-
+   band mechanisms might be required to establish trust.
 
    Because a link with the "identifier" relation type expresses a
    preferred URI for the purpose of referencing, the access URI SHOULD
@@ -268,20 +275,19 @@ Internet-Draft             Identifier Relation                 July 2017
    publication.  Yet, the annotation application may also want to
    appropriately include the identifying URI in the annotation.
 
+
+
+
+Van de Sompel, et al.   Expires January 14, 2018                [Page 5]
+
+Internet-Draft             Identifier Relation                 July 2017
+
+
 5.  Distinction with Other Relation Types
 
    The following existing IANA-registered relationships are similar to
    the relationship that "identifier" is intended to convey, but are not
    appropriate for various reasons:
-
-
-
-
-
-Van de Sompel, et al.   Expires January 13, 2018                [Page 5]
-
-Internet-Draft             Identifier Relation                 July 2017
-
 
    o  "alternate" [RFC4287], used to link to an alternate version of the
       content at the link context, for example the same content with
@@ -326,18 +332,16 @@ Internet-Draft             Identifier Relation                 July 2017
    HTTP Link header are semantically equivalent, "bookmark" is also
    excluded from use in HTTP Link.
 
-   While "related" could be used, its semantics are too vague to convey
-   the specific nature of "identifier" as a means to convey a URI for
-   the purpose of referencing.
 
 
-
-
-
-Van de Sompel, et al.   Expires January 13, 2018                [Page 6]
+Van de Sompel, et al.   Expires January 14, 2018                [Page 6]
 
 Internet-Draft             Identifier Relation                 July 2017
 
+
+   While "related" could be used, its semantics are too vague to convey
+   the specific nature of "identifier" as a means to convey a URI for
+   the purpose of referencing.
 
 6.  Examples
 
@@ -386,11 +390,7 @@ Content-Type: text/html;charset=utf-8
 
 
 
-
-
-
-
-Van de Sompel, et al.   Expires January 13, 2018                [Page 7]
+Van de Sompel, et al.   Expires January 14, 2018                [Page 7]
 
 Internet-Draft             Identifier Relation                 July 2017
 
@@ -429,27 +429,11 @@ Content-Type: text/html;charset=utf-8
 
 8.  Security Considerations
 
-   A site might use the "identifier" link relation with inaccurate or
-   misleading information about which URI to use for referencing.  Since
-   cases exist in which it may not be possible to automatically verify
-   the correctness of the identifying URI, out-of-band mechanisms might
-   be required to establish trust.
-
    If a trusted site is compromised, the "identifier" link relation
    could be used with malicious intent to supply misleading URIs for
    referencing.  Use of these links might direct user agents to an
    attacker's site, break the referencing record they are intended to
    support, or corrupt algorithmic interpretation of referencing data.
-
-
-
-
-
-
-Van de Sompel, et al.   Expires January 13, 2018                [Page 8]
-
-Internet-Draft             Identifier Relation                 July 2017
-
 
 9.  References
 
@@ -458,6 +442,14 @@ Internet-Draft             Identifier Relation                 July 2017
    [I-D.nottingham-rfc5988bis]
               Nottingham, M., "Web Linking", draft-nottingham-
               rfc5988bis-06 (work in progress), June 2017.
+
+
+
+
+Van de Sompel, et al.   Expires January 14, 2018                [Page 8]
+
+Internet-Draft             Identifier Relation                 July 2017
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -496,17 +488,6 @@ Internet-Draft             Identifier Relation                 July 2017
               June 2017, <https://blog.crossref.org/display-
               guidelines/>.
 
-
-
-
-
-
-
-Van de Sompel, et al.   Expires January 13, 2018                [Page 9]
-
-Internet-Draft             Identifier Relation                 July 2017
-
-
    [DOIs]     "Information and documentation - Digital object identifier
               system", ISO 26324:2012(en), 2012,
               <https://www.iso.org/obp/ui/#iso:std:iso:26324:ed-
@@ -516,6 +497,15 @@ Internet-Draft             Identifier Relation                 July 2017
               Kunze, J. and R. Rodgers, "The ARK Identifier Scheme",
               Internet Draft draft-kunze-ark-18, April 2013,
               <https://datatracker.ietf.org/doc/html/draft-kunze-ark>.
+
+
+
+
+
+Van de Sompel, et al.   Expires January 14, 2018                [Page 9]
+
+Internet-Draft             Identifier Relation                 July 2017
+
 
    [FOAF]     Brickley, D. and L. Miller, "FOAF Vocabulary Specification
               0.99", January 2014, <http://xmlns.com/foaf/spec/>.
@@ -551,18 +541,6 @@ Authors' Addresses
    URI:   http://www.cs.odu.edu/~mln/
 
 
-
-
-
-
-
-
-
-Van de Sompel, et al.   Expires January 13, 2018               [Page 10]
-
-Internet-Draft             Identifier Relation                 July 2017
-
-
    John Kunze
    California Digital Library
 
@@ -580,38 +558,4 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Van de Sompel, et al.   Expires January 13, 2018               [Page 11]
+Van de Sompel, et al.   Expires January 14, 2018               [Page 10]
