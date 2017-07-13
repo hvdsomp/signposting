@@ -95,7 +95,7 @@ Table of Contents
 
    A web resource is routinely referenced (e.g. linked, bookmarked) by
    means of the URI where it is directly accessed.  But cases exist
-   whereby referencing a resource by means of a different URI is
+   where referencing a resource by means of a different URI is
    preferred, for example because the latter URI is intended to be more
    persistent over time.  Currently, there is no way to convey such
    alternative referencing preferences; this specification introduces a
@@ -120,8 +120,7 @@ Internet-Draft             Identifier Relation                 July 2017
    "link target" are defined as IRIs but in common scenarios are also
    URIs.
 
-   Additionally, for clarity, this specification uses the following
-   terms:
+   Additionally, this specification uses the following terms:
 
    o  "access URI": A URI at which a user agent accesses a web resource.
 
@@ -137,8 +136,8 @@ Internet-Draft             Identifier Relation                 July 2017
 
    Despite sound advice regarding the design of Cool URIs [CoolURIs],
    link rot ("HTTP 404 Not Found") is a common phenomena when following
-   links on the web.  Certain communities of practice have introduced a
-   solution to combat this problem that typically consists of:
+   links on the web.  Certain communities of practice have introduced
+   solutions to combat this problem that typically consist of:
 
    o  Accepting the reality that the web location of a resource - the
       access URI - may change over time.
@@ -155,14 +154,15 @@ Internet-Draft             Identifier Relation                 July 2017
 
    This approach is, for example, used by:
 
-   o  Scholalry publishers that use DOIs [DOIs] to identify articles and
+   o  Scholarly publishers that use DOIs [DOIs] to identify articles and
       DOI URLs [DOI-URLs] as a means to keep cross-publisher article-to-
       article links operational, even when the journals in which the
       articles are published change hands from one publisher to another,
       for example, as a result of an acquisition.
 
-
-
+   o  Authors of controlled vocabularies that use PURLs [PURLs] for
+      vocabulary terms to ensure that the term URIs remain stable even
+      if management of the vocabulary is transfered to a new custodian.
 
 
 
@@ -170,10 +170,6 @@ Van de Sompel, et al.   Expires January 14, 2018                [Page 3]
 
 Internet-Draft             Identifier Relation                 July 2017
 
-
-   o  Authors of controlled vocabularies that use PURLs [PURLs] for
-      vocabulary terms to ensure that the term URIs remain stable even
-      if management of the vocabulary is transfered to a new custodian.
 
    o  A variety of organizations, including libraries, archives, and
       museums that assign ARK URLs [draft-kunze-ark-18] to information
@@ -220,15 +216,16 @@ Internet-Draft             Identifier Relation                 July 2017
       supplementary information, high-resolution images, a video
       recording of an experiment.
 
+   o  Scientific or governmental open data sets frequently consist of
+      multiple files.
+
+
 
 
 Van de Sompel, et al.   Expires January 14, 2018                [Page 4]
 
 Internet-Draft             Identifier Relation                 July 2017
 
-
-   o  Scientific or governmental open data sets frequently consist of
-      multiple files.
 
    o  Online books typically consist of multiple chapters.
 
@@ -278,6 +275,9 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
+
+
+
 Van de Sompel, et al.   Expires January 14, 2018                [Page 5]
 
 Internet-Draft             Identifier Relation                 July 2017
@@ -323,14 +323,14 @@ Internet-Draft             Identifier Relation                 July 2017
    exclude "alternate", "canonical", and "duplicate" as possible
    relation types.
 
-   The intent of "bookmark" is closest related to that of "identifier"
-   in that the link target of a link with this relation type is intended
-   for bookmarking, which is a case of referencing.  However, "bookmark"
-   is specifically defined for use in conjunction with the HTML
-   <article> element and is explictly excluded from use in the <link>
-   element in HTML <head>.  Since a link in <link> and a link in the
-   HTTP Link header are semantically equivalent, "bookmark" is also
-   excluded from use in HTTP Link.
+   The intent of "bookmark" is closest to that of "identifier" in that
+   the link target of a link with this relation type is intended for
+   bookmarking, which is a case of referencing.  However, "bookmark" is
+   specifically defined for use in conjunction with the HTML <article>
+   element and is explictly excluded from use in the <link> element in
+   HTML <head>.  Since a link in <link> and a link in the HTTP Link
+   header are semantically equivalent, "bookmark" is also excluded from
+   use in HTTP Link.
 
 
 
