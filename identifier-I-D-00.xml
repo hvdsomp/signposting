@@ -380,7 +380,7 @@ Content-Type: text/html;charset=utf-8
               </front>
           </reference>
           
-            <reference anchor="identifier-blog" target="http://ws-dl.blogspot.nl/2016/11/2016-11-07-linking-to-persistent.html">
+            <reference anchor="identifier-blog" target="http://ws-dl.blogspot.com/2016/11/2016-11-07-linking-to-persistent.html">
                 <front>
                     <title abbrev="PID Linking">Linking to Persistent Identifiers with rel="identifier"</title>
                     <author initials="M.L." surname="Nelson" fullname="Michael L. Nelson"/>
@@ -405,7 +405,7 @@ Content-Type: text/html;charset=utf-8
                   <date day="5" month="April" year="2017"/>
               </front>
           </reference>
-            <reference anchor="PIDs-must-be-used" target="http://arxiv.org/1602.09102">
+            <reference anchor="PIDs-must-be-used" target="https://arxiv.org/abs/1602.09102">
               <front>
                   <title abbrev="PIDs Must Be Used">Persistent URIs Must Be Used To Be Persistent</title>
                   <author initials="H." surname="Van de Sompel" fullname="Herbert Van de Sompel"/>
