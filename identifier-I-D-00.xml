@@ -71,7 +71,7 @@
     <middle>
         <section title="Introduction" anchor="introduction">
             <t>A web resource is routinely referenced (e.g. linked, bookmarked) by means of the URI where it is 
-                directly accessed. But cases exist whereby referencing 
+                directly accessed. But cases exist where referencing
                 a resource by means of a different URI is preferred, for example because the latter URI 
                 is intended to be more persistent over time. Currently, there is no way to convey such  
                 alternative referencing preferences; this specification introduces a link relation type 
@@ -84,7 +84,7 @@
             <t>This specification uses the terms "link context" and "link target" as defined in 
                 <xref target="I-D.nottingham-rfc5988bis"/>. Both "link context" and "link target" 
                 are defined as IRIs but in common scenarios are also URIs.</t> 
-            <t>Additionally, for clarity, this specification uses the following terms:</t>
+            <t>Additionally, this specification uses the following terms:</t>
             <t><list style="symbols">
                 <t>&quot;access URI&quot;: A URI at which a user agent accesses a web resource. 
                 </t>
@@ -99,8 +99,8 @@
             <section title="Persistent Identifiers" anchor="PIDs">
             <t>Despite sound advice regarding the design of Cool URIs <xref target="CoolURIs"/>, 
                 link rot (&quot;HTTP 404 Not Found&quot;) is a common phenomena when following links on 
-                the web. Certain communities of practice have introduced a solution to combat this problem  
-                that typically consists of:</t>
+                the web. Certain communities of practice have introduced solutions to combat this problem
+                that typically consist of:</t>
             <t><list style="symbols">
                 <t>Accepting the reality that the web location of a resource - the access URI - 
                     may change over time.</t>
