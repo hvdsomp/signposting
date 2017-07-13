@@ -57,7 +57,7 @@
                 <uri>https://orcid.org/0000-0002-7970-7855</uri>
             </address>
         </author>
-        <date day="12" month="July" year="2017"/>
+        <date day="13" month="July" year="2017"/>
         <abstract>
             <t>This specification defines a link relation type that is intended 
                 to convey that a URI, other than the URI that provides a link 
@@ -160,7 +160,7 @@
                <t>Online books typically consist of multiple chapters.</t>
                 </list></t>
                 <t>While each of these components are accessible at their distinct URI - the access URI - they often also 
-                    share a URI assinged to the intellectual publication of which they are components - the identifying URI.</t> 
+                    share a URI assigned to the intellectual publication of which they are components - the identifying URI.</t> 
                 <t>The link relation type defined in this specification allows to 
                     convey to user agents that, for the purpose of referencing, the identifying URI of the intellectual publication  
                 is preferred over an access URI of a component of the publication.
@@ -170,9 +170,15 @@
         <section title="The &quot;identifier&quot; Relation Type for Expressing a Preferred URI for the Purpose of Referencing" anchor="identifier-link-relation">
             <t>A link with the "identifier" relation type indicates that the link target is preferred over 
                 the link context for the purpose of referencing.</t>
-            <t>It is RECOMMENDED for identifying URIs 
-                to support protocol-based access as a means to ensure that applications that 
-                store identifying URIs can effectively re-use them for access.</t>
+            <t>An identifying URI SHOULD support protocol-based access as a means to ensure 
+                that applications that store identifying URIs can effectively re-use them 
+                for access.</t>
+            <t>An identifying URI SHOULD provide the ability for a user agent to follow its 
+                nose back to the access URI, e.g. by following redirects and/or links. 
+                This helps a user agent to establish trust in the identifying URI. 
+                In cases where there is no way for the agent to automatically verify the 
+                correctness of the identifying URI, out-of-band mechanisms might be required to 
+                establish trust.</t>
             <t>Because a link with the "identifier" relation type expresses a preferred URI for the purpose of 
                 referencing, the access URI SHOULD only provide one link with that relation type. 
             If more than one "identifier" link is provided, the user agent may decide to select one
@@ -313,11 +319,7 @@ Content-Type: text/html;charset=utf-8
                 </t>
             </section>
         </section>
-        <section title="Security Considerations" anchor="security-considerations">
-            <t>A site might use the "identifier" link relation with inaccurate or misleading 
-                information about which URI to use for referencing. Since cases exist in which 
-                it may not be possible to automatically verify the correctness of the identifying URI, 
-                out-of-band mechanisms might be required to establish trust.</t>   
+        <section title="Security Considerations" anchor="security-considerations"> 
              <t>If a trusted site is compromised, the "identifier" link relation could be 
                  used with malicious intent to supply misleading URIs for referencing. 
                  Use of these links might direct user agents to an attacker's site, 
