@@ -113,7 +113,7 @@
             </list></t>
             <t>This approach is, for example, used by:</t>
             <t><list style="symbols">
-                <t>Scholalry publishers that use DOIs <xref target="DOIs"/> to identify articles and DOI URLs 
+                <t>Scholarly publishers that use DOIs <xref target="DOIs"/> to identify articles and DOI URLs 
                     <xref target="DOI-URLs"/> as a means to keep cross-publisher article-to-article links 
                     operational, even when the journals in which the articles are published change hands from 
                     one publisher to another, for example, as a result of an acquisition.</t>
@@ -229,7 +229,7 @@
                         table of contents with links to component resources and possibly 
                         a summary. These considerations exclude "alternate", 
                         "canonical", and "duplicate" as possible relation types.</t>
-                    <t>The intent of "bookmark" is closest related to that of "identifier" 
+                    <t>The intent of "bookmark" is closest to that of "identifier" 
                         in that the link target of a link with this relation type is intended for 
                         bookmarking, which is a case of referencing. However, "bookmark" 
                         is specifically defined for use in conjunction with the HTML 
