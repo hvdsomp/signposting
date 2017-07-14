@@ -513,13 +513,13 @@ Internet-Draft             Identifier Relation                 July 2017
    [identifier-blog]
               Nelson, M., "Linking to Persistent Identifiers with
               rel="identifier"", July 2016, <http://ws-
-              dl.blogspot.nl/2016/11/2016-11-07-linking-to-
+              dl.blogspot.com/2016/11/2016-11-07-linking-to-
               persistent.html>.
 
    [PIDs-must-be-used]
               Van de Sompel, H., Klein, M., and S. Jones, "Persistent
               URIs Must Be Used To Be Persistent", February 2016,
-              <http://arxiv.org/1602.09102>.
+              <https://arxiv.org/abs/1602.09102>.
 
    [PURLs]    "Persistent uniform resource locator", April 2017,
               <https://en.wikipedia.org/wiki/
