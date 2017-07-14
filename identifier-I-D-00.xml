@@ -37,7 +37,7 @@
         <author initials="J." surname="Kunze" fullname="John Kunze">
             <organization>California Digital Library</organization>
             <address>
-                <email>John.Kunze@ucop.edu</email>
+                <email>jak@ucop.edu</email>
                 <uri>http://www.cdlib.org/contact/staff_directory/jkunze.html</uri>
             </address>
         </author>
@@ -59,7 +59,7 @@
         </author>
         <date day="13" month="July" year="2017"/>
         <abstract>
-            <t>This specification defines a link relation type that is intended 
+            <t>This specification defines an HTML/HTTP link relation type that is intended 
                 to convey that a URI, other than the URI that provides a link 
                 with the relation type, is preferred for the purpose of referencing. 
             </t>
@@ -73,17 +73,17 @@
             <t>A web resource is routinely referenced (e.g. linked, bookmarked) by means of the URI where it is 
                 directly accessed. But cases exist where referencing
                 a resource by means of a different URI is preferred, for example because the latter URI 
-                is intended to be more persistent over time. Currently, there is no way to convey such  
-                alternative referencing preferences; this specification introduces a link relation type 
-                intended for that purpose.</t>
+                is intended to be more persistent over time. Currently, there are few machine-readable ways to 
+                convey such alternative referencing preferences; this specification addresses the deficit by
+                introducing a relation attribute ("rel") to be used with HTML "link" elements and HTTP "Link" headers.</t>
         </section>
         <section title="Terminology" anchor="terminology">
             <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", 
                 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to 
                 be interpreted as described in RFC 2119 <xref target="RFC2119"/>.</t>
-            <t>This specification uses the terms "link context" and "link target" as defined in 
-                <xref target="I-D.nottingham-rfc5988bis"/>. Both "link context" and "link target" 
-                are defined as IRIs but in common scenarios are also URIs.</t> 
+            <t>This specification uses the terms "link context" and "link target" in the same ways
+                 that <xref target="I-D.nottingham-rfc5988bis"/> uses "context IRI" and "target IRI",
+                 respectively. Although defined as IRIs, in common scenarios they are also URIs.</t> 
             <t>Additionally, this specification uses the following terms:</t>
             <t><list style="symbols">
                 <t>&quot;access URI&quot;: A URI at which a user agent accesses a web resource. 
@@ -137,7 +137,7 @@
                </t>
             </section>
             <section title="Preferred Social Identifier" anchor="ORCID">
-                <t>A web user commonly has mutliple profiles on the web, for example, 
+                <t>A web user commonly has multiple profiles on the web, for example, 
                     one per social network she takes part in, 
                     a personal homepage, a professional homepage, a FOAF profile <xref target="FOAF"/>, etc. 
                     Each of these profiles is accessible at a distinct URI. But the user may 
@@ -150,12 +150,11 @@
             </section>
             <section title="Multi-Resource Publications" anchor="ORE">
                 <t>When publishing on the web, it is not uncommon to make distinct components of a 
-                publication available as different web resources, each with their own URI. For example:</t>
+                publication available as different web resources, each with its own URI. For example:</t>
                 <t><list style="symbols">
-                <t>Contemporary scholarly publications routinely consists of a 
-                traditional article as well as additional materials that are considered an integral part of the 
-                publication such as supplementary information, high-resolution images, a video recording 
-                of an experiment.</t>
+                <t>Contemporary scholarly publications routinely consist of a 
+                traditional article as well as supplementary information, high-resolution images, a video recording 
+                of an experiment, etc.</t>
                <t>Scientific or governmental open data sets frequently consist of multiple files.</t>
                <t>Online books typically consist of multiple chapters.</t>
                 </list></t>
@@ -168,8 +167,8 @@
             </section>
             </section>
         <section title="The &quot;identifier&quot; Relation Type for Expressing a Preferred URI for the Purpose of Referencing" anchor="identifier-link-relation">
-            <t>A link with the "identifier" relation type indicates that the link target is preferred over 
-                the link context for the purpose of referencing.</t>
+            <t>A link with the "identifier" relation type indicates that the link target is the identifying 
+                 URI, namely, that the link target is preferred over the link context for the purpose of referencing.</t>
             <t>An identifying URI SHOULD support protocol-based access as a means to ensure 
                 that applications that store identifying URIs can effectively re-use them 
                 for access.</t>
@@ -182,7 +181,8 @@
             <t>Because a link with the "identifier" relation type expresses a preferred URI for the purpose of 
                 referencing, the access URI SHOULD only provide one link with that relation type. 
             If more than one "identifier" link is provided, the user agent may decide to select one
-            (e.g. an HTTP URI over a mailto URI), for example, based on the purpose that the identifying URI will serve.</t> 
+            (e.g. an HTTP URI over a mailto URI), for example, based on the purpose that the identifying URI will serve.
+             [is that sentence necessary? or is it the same as saying the spec is silent about this case?]</t> 
             <t>Providing a link with the "identifier" relation type does not prevent using the access URI 
                 for the purpose of referencing if such specificity is needed for the application at hand.  
                 For example, in the case of scenario <xref target="ORE"/> the access URI is likely required for the 
@@ -225,7 +225,7 @@
                         In the scenario of <xref target="ORCID"/>, the content at the 
                         identifying URI is a profile that is different than the profile at the 
                         access URI. In the scenario of <xref target="ORE"/> the 
-                        content at the identifying URI, if any, would typcially be a sort of 
+                        content at the identifying URI, if any, would typically be a sort of 
                         table of contents with links to component resources and possibly 
                         a summary. These considerations exclude "alternate", 
                         "canonical", and "duplicate" as possible relation types.</t>
