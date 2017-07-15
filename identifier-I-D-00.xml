@@ -9,6 +9,7 @@
 <!ENTITY RFC6596 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6596.xml"> 
 <!ENTITY RFC4287 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.4287.xml">
 <!ENTITY RFC6249 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6249.xml">
+<!ENTITY RFC5988 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5988.xml">
 <!ENTITY I-D.nottingham-rfc5988bis SYSTEM "https://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-nottingham-rfc5988bis-06.xml">
 ]>
 
@@ -37,7 +38,7 @@
         <author initials="J." surname="Kunze" fullname="John Kunze">
             <organization>California Digital Library</organization>
             <address>
-                <email>John.Kunze@ucop.edu</email>
+                <email>jak@ucop.edu</email>
                 <uri>http://www.cdlib.org/contact/staff_directory/jkunze.html</uri>
             </address>
         </author>
@@ -73,8 +74,9 @@
             <t>A web resource is routinely referenced (e.g. linked, bookmarked) by means of the URI where it is 
                 directly accessed. But cases exist where referencing
                 a resource by means of a different URI is preferred, for example because the latter URI 
-                is intended to be more persistent over time. Currently, there is no way to convey such  
-                alternative referencing preferences; this specification introduces a link relation type 
+                is intended to be more persistent over time. Currently, there is no link relation type 
+                to convey such alternative referencing preference; 
+                this specification addresses this deficit by introducing a link relation type 
                 intended for that purpose.</t>
         </section>
         <section title="Terminology" anchor="terminology">
@@ -82,8 +84,11 @@
                 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to 
                 be interpreted as described in RFC 2119 <xref target="RFC2119"/>.</t>
             <t>This specification uses the terms "link context" and "link target" as defined in 
-                <xref target="I-D.nottingham-rfc5988bis"/>. Both "link context" and "link target" 
-                are defined as IRIs but in common scenarios are also URIs.</t> 
+                <xref target="I-D.nottingham-rfc5988bis"/>. 
+                These terms respectively correspond with "Context IRI" and "Target IRI" as used in 
+                <xref target="RFC5988"/>.
+                Although defined as IRIs,
+                in common scenarios they are also URIs.</t> 
             <t>Additionally, this specification uses the following terms:</t>
             <t><list style="symbols">
                 <t>&quot;access URI&quot;: A URI at which a user agent accesses a web resource. 
@@ -137,7 +142,7 @@
                </t>
             </section>
             <section title="Preferred Social Identifier" anchor="ORCID">
-                <t>A web user commonly has mutliple profiles on the web, for example, 
+                <t>A web user commonly has multiple profiles on the web, for example, 
                     one per social network she takes part in, 
                     a personal homepage, a professional homepage, a FOAF profile <xref target="FOAF"/>, etc. 
                     Each of these profiles is accessible at a distinct URI. But the user may 
@@ -150,7 +155,7 @@
             </section>
             <section title="Multi-Resource Publications" anchor="ORE">
                 <t>When publishing on the web, it is not uncommon to make distinct components of a 
-                publication available as different web resources, each with their own URI. For example:</t>
+                publication available as different web resources, each with its own URI. For example:</t>
                 <t><list style="symbols">
                 <t>Contemporary scholarly publications routinely consists of a 
                 traditional article as well as additional materials that are considered an integral part of the 
@@ -168,7 +173,8 @@
             </section>
             </section>
         <section title="The &quot;identifier&quot; Relation Type for Expressing a Preferred URI for the Purpose of Referencing" anchor="identifier-link-relation">
-            <t>A link with the "identifier" relation type indicates that the link target is preferred over 
+            <t>A link with the "identifier" relation type indicates that the link target - the identifying URI - 
+                is preferred over 
                 the link context for the purpose of referencing.</t>
             <t>An identifying URI SHOULD support protocol-based access as a means to ensure 
                 that applications that store identifying URIs can effectively re-use them 
@@ -225,7 +231,7 @@
                         In the scenario of <xref target="ORCID"/>, the content at the 
                         identifying URI is a profile that is different than the profile at the 
                         access URI. In the scenario of <xref target="ORE"/> the 
-                        content at the identifying URI, if any, would typcially be a sort of 
+                        content at the identifying URI, if any, would typically be a sort of 
                         table of contents with links to component resources and possibly 
                         a summary. These considerations exclude "alternate", 
                         "canonical", and "duplicate" as possible relation types.</t>
@@ -335,6 +341,7 @@ Content-Type: text/html;charset=utf-8
 &RFC6596; 
 &RFC4287;
 &RFC6249;
+&RFC5988;
 &I-D.nottingham-rfc5988bis;
 
             <reference anchor="W3C.REC-html5-20151028" target="https://www.w3.org/TR/2014/REC-html5-20141028/">
