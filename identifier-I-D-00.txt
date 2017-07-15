@@ -97,9 +97,10 @@ Table of Contents
    means of the URI where it is directly accessed.  But cases exist
    where referencing a resource by means of a different URI is
    preferred, for example because the latter URI is intended to be more
-   persistent over time.  Currently, there is no way to convey such
-   alternative referencing preferences; this specification introduces a
-   link relation type intended for that purpose.
+   persistent over time.  Currently, there is no link relation type to
+   convey such alternative referencing preference; this specification
+   addresses this deficit by introducing a link relation type intended
+   for that purpose.
 
 2.  Terminology
 
@@ -109,16 +110,15 @@ Table of Contents
 
 
 
-
 Van de Sompel, et al.   Expires January 14, 2018                [Page 2]
 
 Internet-Draft             Identifier Relation                 July 2017
 
 
    This specification uses the terms "link context" and "link target" as
-   defined in [I-D.nottingham-rfc5988bis].  Both "link context" and
-   "link target" are defined as IRIs but in common scenarios are also
-   URIs.
+   defined in [I-D.nottingham-rfc5988bis].  These terms respectively
+   correspond with "Context IRI" and "Target IRI" as used in [RFC5988].
+   Although defined as IRIs, in common scenarios they are also URIs.
 
    Additionally, this specification uses the following terms:
 
@@ -192,7 +192,7 @@ Internet-Draft             Identifier Relation                 July 2017
 
 3.2.  Preferred Social Identifier
 
-   A web user commonly has mutliple profiles on the web, for example,
+   A web user commonly has multiple profiles on the web, for example,
    one per social network she takes part in, a personal homepage, a
    professional homepage, a FOAF profile [FOAF], etc.  Each of these
    profiles is accessible at a distinct URI.  But the user may have a
@@ -208,7 +208,7 @@ Internet-Draft             Identifier Relation                 July 2017
 
    When publishing on the web, it is not uncommon to make distinct
    components of a publication available as different web resources,
-   each with their own URI.  For example:
+   each with its own URI.  For example:
 
    o  Contemporary scholarly publications routinely consists of a
       traditional article as well as additional materials that are
@@ -243,8 +243,8 @@ Internet-Draft             Identifier Relation                 July 2017
     the Purpose of Referencing
 
    A link with the "identifier" relation type indicates that the link
-   target is preferred over the link context for the purpose of
-   referencing.
+   target - the identifying URI - is preferred over the link context for
+   the purpose of referencing.
 
    An identifying URI SHOULD support protocol-based access as a means to
    ensure that applications that store identifying URIs can effectively
@@ -318,7 +318,7 @@ Internet-Draft             Identifier Relation                 July 2017
    scenario of Section 3.2, the content at the identifying URI is a
    profile that is different than the profile at the access URI.  In the
    scenario of Section 3.3 the content at the identifying URI, if any,
-   would typcially be a sort of table of contents with links to
+   would typically be a sort of table of contents with links to
    component resources and possibly a summary.  These considerations
    exclude "alternate", "canonical", and "duplicate" as possible
    relation types.
@@ -460,6 +460,10 @@ Internet-Draft             Identifier Relation                 July 2017
               Syndication Format", RFC 4287, DOI 10.17487/RFC4287,
               December 2005, <http://www.rfc-editor.org/info/rfc4287>.
 
+   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988,
+              DOI 10.17487/RFC5988, October 2010,
+              <http://www.rfc-editor.org/info/rfc5988>.
+
    [RFC6249]  Bryan, A., McNab, N., Tsujikawa, T., Poeml, P., and H.
               Nordstrom, "Metalink/HTTP: Mirrors and Hashes", RFC 6249,
               DOI 10.17487/RFC6249, June 2011,
@@ -493,10 +497,6 @@ Internet-Draft             Identifier Relation                 July 2017
               <https://www.iso.org/obp/ui/#iso:std:iso:26324:ed-
               1:v1:en>.
 
-   [draft-kunze-ark-18]
-              Kunze, J. and R. Rodgers, "The ARK Identifier Scheme",
-              Internet Draft draft-kunze-ark-18, April 2013,
-              <https://datatracker.ietf.org/doc/html/draft-kunze-ark>.
 
 
 
@@ -506,6 +506,11 @@ Van de Sompel, et al.   Expires January 14, 2018                [Page 9]
 
 Internet-Draft             Identifier Relation                 July 2017
 
+
+   [draft-kunze-ark-18]
+              Kunze, J. and R. Rodgers, "The ARK Identifier Scheme",
+              Internet Draft draft-kunze-ark-18, April 2013,
+              <https://datatracker.ietf.org/doc/html/draft-kunze-ark>.
 
    [FOAF]     Brickley, D. and L. Miller, "FOAF Vocabulary Specification
               0.99", January 2014, <http://xmlns.com/foaf/spec/>.
@@ -544,8 +549,18 @@ Authors' Addresses
    John Kunze
    California Digital Library
 
-   Email: John.Kunze@ucop.edu
+   Email: jak@ucop.edu
    URI:   http://www.cdlib.org/contact/staff_directory/jkunze.html
+
+
+
+
+
+
+
+Van de Sompel, et al.   Expires January 14, 2018               [Page 10]
+
+Internet-Draft             Identifier Relation                 July 2017
 
 
    Simeon Warner
@@ -558,4 +573,45 @@ Authors' Addresses
 
 
 
-Van de Sompel, et al.   Expires January 14, 2018               [Page 10]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Van de Sompel, et al.   Expires January 14, 2018               [Page 11]
