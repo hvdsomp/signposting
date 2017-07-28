@@ -35,14 +35,6 @@
                 <uri>http://www.cs.odu.edu/~mln/</uri>
             </address>
         </author>
-        <author initials="J." surname="Kunze" fullname="John Kunze">
-            <organization>California Digital Library</organization>
-            <address>
-                <email>jak@ucop.edu</email>
-                <uri>http://www.cdlib.org/contact/staff_directory/jkunze.html</uri>
-            </address>
-        </author>
-        <!--
         <author initials="G." surname="Bilder" fullname="Geoffrey Bilder">
             <organization>Crossref</organization>
             <address>
@@ -50,7 +42,13 @@
                 <uri>https://www.crossref.org/authors/geoffrey-bilder/</uri>
             </address>
         </author>
-        -->
+        <author initials="J." surname="Kunze" fullname="John Kunze">
+            <organization>California Digital Library</organization>
+            <address>
+                <email>jak@ucop.edu</email>
+                <uri>http://www.cdlib.org/contact/staff_directory/jkunze.html</uri>
+            </address>
+        </author>
         <author initials="S." surname="Warner" fullname="Simeon Warner">
             <organization>Cornell University</organization>
             <address>
@@ -58,7 +56,7 @@
                 <uri>https://orcid.org/0000-0002-7970-7855</uri>
             </address>
         </author>
-        <date day="13" month="July" year="2017"/>
+        <date day="28" month="July" year="2017"/>
         <abstract>
             <t>This specification defines a link relation type that is intended 
                 to convey that a URI, other than the URI that provides a link 
@@ -141,6 +139,40 @@
                 into account when recording a URI.
                </t>
             </section>
+            <section title="Version Identifiers" anchor="versions">
+                <t>Resource versioning systems often use a naming approach whereby:</t>
+                <t><list style="symbols">
+                    <t>the most 
+                    recent version of a resource is at any time available at the 
+                    same, generic URI</t>
+                    <t>each version of the resource -  
+                    including the most recent one -  
+                    has a distinct version URI.</t> 
+                </list></t>
+                    <t>For example, Wikipedia uses 
+                    generic URIs of the form 
+                    &lt;http://en.wikipedia.org/wiki/John_Doe&gt; 
+                    and version URIs of the form 
+                    &lt;https://en.wikipedia.org/w/index.php?title=John_Doe&amp;oldid=776253882&gt;.
+                </t>
+                <t>While the current version of a resource is accessed at 
+                the generic URI, some versioning systems adhere to a policy that favors linking and referencing 
+                by means of the version URI that was minted for the current version. 
+                To express this using the terminology of <xref target="terminology"/>, 
+                    these policies intend that the generic URI is the access URI, 
+                and that the version URI is the identifying URI.
+                These policies are informed by the 
+                understanding that the content at the generic URI is likely to 
+                evolve over time, and that accurate links or references should lead to
+                the content as it was at the time of referencing. 
+                To that end, Wikipedia's &quot;Permanent link&quot; and 
+                &quot;Cite this page&quot; functionalities use the 
+                version URI, not the generic URI.
+                </t>
+                <t>The link relation type defined in this specification allows to 
+                    convey to user agents that the version URI is preferred over the generic URI 
+                    for referencing. </t>
+            </section>
             <section title="Preferred Social Identifier" anchor="ORCID">
                 <t>A web user commonly has multiple profiles on the web, for example, 
                     one per social network she takes part in, 
@@ -182,9 +214,7 @@
             <t>An identifying URI SHOULD provide the ability for a user agent to follow its 
                 nose back to the access URI, e.g. by following redirects and/or links. 
                 This helps a user agent to establish trust in the identifying URI. 
-                In cases where there is no way for the agent to automatically verify the 
-                correctness of the identifying URI, out-of-band mechanisms might be required to 
-                establish trust.</t>
+                </t>
             <t>Because a link with the "identifier" relation type expresses a preferred URI for the purpose of 
                 referencing, the access URI SHOULD only provide one link with that relation type. 
             If more than one "identifier" link is provided, the user agent may decide to select one
@@ -326,6 +356,10 @@ Content-Type: text/html;charset=utf-8
             </section>
         </section>
         <section title="Security Considerations" anchor="security-considerations"> 
+            <t>In cases where there is no way for the agent to automatically verify the 
+                correctness of the identifying URI (cf. <xref target="identifier-link-relation"/>), 
+                out-of-band mechanisms might be required to 
+                establish trust.</t>
              <t>If a trusted site is compromised, the "identifier" link relation could be 
                  used with malicious intent to supply misleading URIs for referencing. 
                  Use of these links might direct user agents to an attacker's site, 
@@ -451,7 +485,3 @@ Content-Type: text/html;charset=utf-8
 -->
     </back>
 </rfc>
-
-
-
-
