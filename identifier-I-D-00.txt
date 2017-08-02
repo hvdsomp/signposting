@@ -6,14 +6,14 @@
 Network Working Group                                   H. Van de Sompel
 Internet-Draft                            Los Alamos National Laboratory
 Intended status: Informational                                 M. Nelson
-Expires: January 29, 2018                        Old Dominion University
+Expires: February 3, 2018                        Old Dominion University
                                                                G. Bilder
                                                                 Crossref
                                                                 J. Kunze
                                               California Digital Library
                                                                S. Warner
                                                       Cornell University
-                                                           July 28, 2017
+                                                          August 2, 2017
 
 
  Identifier: A Link Relation to Convey a Preferred URI for Referencing
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 29, 2018.
+   This Internet-Draft will expire on February 3, 2018.
 
 
 
@@ -54,9 +54,9 @@ Status of This Memo
 
 
 
-Van de Sompel, et al.   Expires January 29, 2018                [Page 1]
+Van de Sompel, et al.   Expires February 3, 2018                [Page 1]
 
-Internet-Draft             Identifier Relation                 July 2017
+Internet-Draft             Identifier Relation               August 2017
 
 
 Copyright Notice
@@ -95,6 +95,7 @@ Table of Contents
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  10
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  10
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  10
+   Appendix A.  Acknowledgements . . . . . . . . . . . . . . . . . .  11
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
@@ -105,15 +106,17 @@ Table of Contents
    preferred, for example because the latter URI is intended to be more
    persistent over time.  Currently, there is no link relation type to
    convey such alternative referencing preference; this specification
+
+
+
+
+Van de Sompel, et al.   Expires February 3, 2018                [Page 2]
+
+Internet-Draft             Identifier Relation               August 2017
+
+
    addresses this deficit by introducing a link relation type intended
    for that purpose.
-
-
-
-Van de Sompel, et al.   Expires January 29, 2018                [Page 2]
-
-Internet-Draft             Identifier Relation                 July 2017
-
 
 2.  Terminology
 
@@ -160,17 +163,17 @@ Internet-Draft             Identifier Relation                 July 2017
 
    This approach is, for example, used by:
 
+
+
+
+Van de Sompel, et al.   Expires February 3, 2018                [Page 3]
+
+Internet-Draft             Identifier Relation               August 2017
+
+
    o  Scholarly publishers that use DOIs [DOIs] to identify articles and
       DOI URLs [DOI-URLs] as a means to keep cross-publisher article-to-
       article links operational, even when the journals in which the
-
-
-
-Van de Sompel, et al.   Expires January 29, 2018                [Page 3]
-
-Internet-Draft             Identifier Relation                 July 2017
-
-
       articles are published change hands from one publisher to another,
       for example, as a result of an acquisition.
 
@@ -186,7 +189,7 @@ Internet-Draft             Identifier Relation                 July 2017
    approaches to pay off, and hence for links to effectively remain
    operational as intended, it is crucial that a resource be referenced
    by means of its identifying URI.  However, the access URI is where a
-   user agent actually accesses the resource (e.g. it is the URI in the
+   user agent actually accesses the resource (e.g., it is the URI in the
    browser's address bar).  As such, there is a considerable risk that
    the access URI instead of the identifying URI is used for referencing
    [PIDs-must-be-used].
@@ -194,8 +197,8 @@ Internet-Draft             Identifier Relation                 July 2017
    The link relation type defined in this specification allows to convey
    to user agents that the identifying URI is the preferred URI for
    referencing.  Applications such as bookmarking tools, citation
-   managers, and webometrics can take this preference into account when
-   recording a URI.
+   managers, and webometrics applications can take this preference into
+   account when recording a URI.
 
 3.2.  Version Identifiers
 
@@ -216,17 +219,17 @@ Internet-Draft             Identifier Relation                 July 2017
    URI, some versioning systems adhere to a policy that favors linking
    and referencing by means of the version URI that was minted for the
    current version.  To express this using the terminology of Section 2,
+
+
+
+Van de Sompel, et al.   Expires February 3, 2018                [Page 4]
+
+Internet-Draft             Identifier Relation               August 2017
+
+
    these policies intend that the generic URI is the access URI, and
    that the version URI is the identifying URI.  These policies are
    informed by the understanding that the content at the generic URI is
-
-
-
-Van de Sompel, et al.   Expires January 29, 2018                [Page 4]
-
-Internet-Draft             Identifier Relation                 July 2017
-
-
    likely to evolve over time, and that accurate links or references
    should lead to the content as it was at the time of referencing.  To
    that end, Wikipedia's "Permanent link" and "Cite this page"
@@ -272,17 +275,16 @@ Internet-Draft             Identifier Relation                 July 2017
    intellectual publication of which they are components - the
    identifying URI.
 
+
+
+
+Van de Sompel, et al.   Expires February 3, 2018                [Page 5]
+
+Internet-Draft             Identifier Relation               August 2017
+
+
    The link relation type defined in this specification allows to convey
    to user agents that, for the purpose of referencing, the identifying
-
-
-
-
-Van de Sompel, et al.   Expires January 29, 2018                [Page 5]
-
-Internet-Draft             Identifier Relation                 July 2017
-
-
    URI of the intellectual publication is preferred over an access URI
    of a component of the publication.
 
@@ -328,16 +330,17 @@ Internet-Draft             Identifier Relation                 July 2017
       varying Content-Type (e.g., application/pdf vs. text/html) and/or
       Content-Language (e.g., en vs. fr).
 
+
+
+
+
+Van de Sompel, et al.   Expires February 3, 2018                [Page 6]
+
+Internet-Draft             Identifier Relation               August 2017
+
+
    o  "bookmark" [W3C.REC-html5-20151028], used to convey a permanent
       link to use for bookmarking purposes.
-
-
-
-
-Van de Sompel, et al.   Expires January 29, 2018                [Page 6]
-
-Internet-Draft             Identifier Relation                 July 2017
-
 
    o  "canonical" [RFC6596], used to identify content that is either
       duplicative or a superset of the content at the link context, for
@@ -387,12 +390,9 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-
-
-
-Van de Sompel, et al.   Expires January 29, 2018                [Page 7]
+Van de Sompel, et al.   Expires February 3, 2018                [Page 7]
 
-Internet-Draft             Identifier Relation                 July 2017
+Internet-Draft             Identifier Relation               August 2017
 
 
 6.1.  Persistent HTTP URI
@@ -446,9 +446,9 @@ Content-Type: text/html;charset=utf-8
 
 
 
-Van de Sompel, et al.   Expires January 29, 2018                [Page 8]
+Van de Sompel, et al.   Expires February 3, 2018                [Page 8]
 
-Internet-Draft             Identifier Relation                 July 2017
+Internet-Draft             Identifier Relation               August 2017
 
 
 HTTP/1.1 200 OK
@@ -502,9 +502,9 @@ Content-Type: text/html;charset=utf-8
 
 
 
-Van de Sompel, et al.   Expires January 29, 2018                [Page 9]
+Van de Sompel, et al.   Expires February 3, 2018                [Page 9]
 
-Internet-Draft             Identifier Relation                 July 2017
+Internet-Draft             Identifier Relation               August 2017
 
 
 9.  References
@@ -558,9 +558,9 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 29, 2018               [Page 10]
+Van de Sompel, et al.   Expires February 3, 2018               [Page 10]
 
-Internet-Draft             Identifier Relation                 July 2017
+Internet-Draft             Identifier Relation               August 2017
 
 
    [DOIs]     "Information and documentation - Digital object identifier
@@ -591,6 +591,11 @@ Internet-Draft             Identifier Relation                 July 2017
               <https://en.wikipedia.org/wiki/
               Persistent_uniform_resource_locator>.
 
+Appendix A.  Acknowledgements
+
+   Thanks for comments and suggestions provided by Martin Klein, Harihar
+   Shankar.
+
 Authors' Addresses
 
    Herbert Van de Sompel
@@ -609,14 +614,9 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-Van de Sompel, et al.   Expires January 29, 2018               [Page 11]
+Van de Sompel, et al.   Expires February 3, 2018               [Page 11]
 
-Internet-Draft             Identifier Relation                 July 2017
+Internet-Draft             Identifier Relation               August 2017
 
 
    Geoffrey Bilder
@@ -670,4 +670,4 @@ Internet-Draft             Identifier Relation                 July 2017
 
 
 
-Van de Sompel, et al.   Expires January 29, 2018               [Page 12]
+Van de Sompel, et al.   Expires February 3, 2018               [Page 12]
