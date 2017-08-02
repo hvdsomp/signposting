@@ -26,6 +26,7 @@
             <address>
                 <email>herbertv@lanl.gov</email>
                 <uri>http://public.lanl.gov/herbertv/</uri>
+            <!--    <uri>https://orcid.org/0000-0002-0715-6126</uri> -->
             </address>
         </author>
         <author initials="M.L." surname="Nelson" fullname="Michael Nelson">
@@ -33,6 +34,7 @@
             <address>
                 <email>mln@cs.odu.edu</email>
                 <uri>http://www.cs.odu.edu/~mln/</uri>
+            <!--    <uri>http://orcid.org/0000-0003-3749-8116</uri> -->
             </address>
         </author>
         <author initials="G." surname="Bilder" fullname="Geoffrey Bilder">
@@ -40,6 +42,7 @@
             <address>
                 <email>gbilder@crossref.org</email>
                 <uri>https://www.crossref.org/authors/geoffrey-bilder/</uri>
+             <!--   <uri>https://orcid.org/0000-0003-1315-5960</uri> -->
             </address>
         </author>
         <author initials="J." surname="Kunze" fullname="John Kunze">
@@ -47,6 +50,7 @@
             <address>
                 <email>jak@ucop.edu</email>
                 <uri>http://www.cdlib.org/contact/staff_directory/jkunze.html</uri>
+             <!--   <uri>https://orcid.org/0000-0001-7604-8041</uri> -->
             </address>
         </author>
         <author initials="S." surname="Warner" fullname="Simeon Warner">
@@ -56,7 +60,7 @@
                 <uri>https://orcid.org/0000-0002-7970-7855</uri>
             </address>
         </author>
-        <date day="28" month="July" year="2017"/>
+        <date day="2" month="August" year="2017"/>
         <abstract>
             <t>This specification defines a link relation type that is intended 
                 to convey that a URI, other than the URI that provides a link 
@@ -130,13 +134,13 @@
                 <t>In order for the investments in infrastructure involved in these approaches to pay off, 
                 and hence for links to effectively remain operational as intended, it is crucial that a resource 
                 be referenced by means of its identifying URI. However, the access URI is where 
-                a user agent actually accesses the resource (e.g. it is the URI in the browser's address bar). 
+                a user agent actually accesses the resource (e.g., it is the URI in the browser's address bar). 
                 As such, there is a considerable risk that the access URI instead of the identifying URI 
                 is used for referencing <xref target="PIDs-must-be-used"/>.</t>
                 <t>The link relation type defined in this specification allows to 
                 convey to user agents that the identifying URI is the preferred URI for referencing. 
-                Applications such as bookmarking tools, citation managers, and webometrics can take this preference 
-                into account when recording a URI.
+                Applications such as bookmarking tools, citation managers, and webometrics applications 
+                can take this preference into account when recording a URI.
                </t>
             </section>
             <section title="Version Identifiers" anchor="versions">
@@ -478,10 +482,8 @@ Content-Type: text/html;charset=utf-8
 -->
       </references>
    
-<!--
       <section title="Acknowledgements">
-         <t>Thanks for comments and suggestions provided by Mark Nottingham, ...</t>
+         <t>Thanks for comments and suggestions provided by Martin Klein, Harihar Shankar.</t>
       </section>
--->
     </back>
 </rfc>
