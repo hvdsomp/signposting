@@ -3,4 +3,5 @@ Specifications provided under the Signposting umbrella are available at https://
 Please use Issues in this repository to provide feedback. Please use the following labels with the Issues:
 - For FAIR Signposting at https://signposting.org/FAIR/: use FAIRSignposting
 - For FAIRiCat at https://signposting.org/FAIRiCat/: use FAIRiCat
+- For Signmap at https://signposting.org/Signmap/: use Signmap
 - For authorIDy at https://signposting.org/authorIDy/: use authorIDy
